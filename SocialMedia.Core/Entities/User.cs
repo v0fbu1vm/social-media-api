@@ -47,6 +47,10 @@ namespace SocialMedia.Core.Entities
         /// </summary>
         public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
         /// <summary>
+        /// Represents a list of <see cref="Comment"/>'s a user has commented on <see cref="Post"/>'s.
+        /// </summary>
+        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        /// <summary>
         /// Represents a list of <see cref="Follower"/>'s that are following this user.
         /// </summary>
         public virtual ICollection<Follower> Followers { get; set; } = new List<Follower>();
