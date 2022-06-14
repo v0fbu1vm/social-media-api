@@ -13,7 +13,8 @@ namespace SocialMedia.Infrastructure.Data.Configs
         {
             builder.HasOne(options => options.User)
                 .WithMany(options => options.Comments)
-                .HasForeignKey(options => options.UserId);
+                .HasForeignKey(options => options.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasOne(options => options.Post)
                 .WithMany(options => options.Comments)

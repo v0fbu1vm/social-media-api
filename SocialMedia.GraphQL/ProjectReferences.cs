@@ -3,7 +3,7 @@ using SocialMedia.Infrastructure;
 
 namespace SocialMedia.GraphQL
 {
-    internal class ProjectReferences : ICore, IInfrastructure
+    internal abstract class ProjectReferences : ICore, IInfrastructure
     {
     }
 }

@@ -2,7 +2,7 @@
 
 namespace SocialMedia.Core.Extensions
 {
-    public static class AssemblyExtensions
+    public static class AppDomainExtensions
     {
         /// <summary>
         /// Gets the assemblies for projects found in the solution.
@@ -22,8 +22,8 @@ namespace SocialMedia.Core.Extensions
             .ToList()
             .ForEach(assemblyName => assemblies.Add(Assembly.Load(assemblyName)));
 
-            if(entryAssembly != null) assemblies.Add(entryAssembly);
-            
+            if (entryAssembly != null) assemblies.Add(entryAssembly);
+
             return assemblies;
         }
     }

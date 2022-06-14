@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SocialMedia.Core.Interfaces;
 using SocialMedia.Infrastructure.Data;
+using SocialMedia.Infrastructure.Services;
 
 namespace SocialMedia.Infrastructure.DependencyInjection
 {
@@ -14,7 +15,9 @@ namespace SocialMedia.Infrastructure.DependencyInjection
         public void Register(IServiceCollection services, IConfiguration _)
         {
             services.AddHttpContextAccessor();
-            services.AddDbContextFactory<DatabaseContext>(options => options.UseSqlServer(AppSettings.ConnectionString));
+            services.AddDbContextFactory<DatabaseContext>(options => options.UseSqlServer(AppSettings.ConnectionStringSqlServer));
+
+            services.AddTransient<IEmailService, EmailService>();
         }
     }
 }

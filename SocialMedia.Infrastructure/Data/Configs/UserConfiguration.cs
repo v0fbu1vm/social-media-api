@@ -25,7 +25,7 @@ namespace SocialMedia.Infrastructure.Data.Configs
                 .WithOne(options => options.User)
                 .HasForeignKey(options => options.UserId);
 
-            builder.HasMany(options => options.Posts)
+            builder.HasMany(options => options.Comments)
                 .WithOne(options => options.User)
                 .HasForeignKey(options => options.UserId);
 

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia.Core", "SocialMedia.Core\SocialMedia.Core.csproj", "{BF2D53E2-56CF-47C3-AAB7-500AB7A53E0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialMedia.Core", "SocialMedia.Core\SocialMedia.Core.csproj", "{BF2D53E2-56CF-47C3-AAB7-500AB7A53E0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia.Infrastructure", "SocialMedia.Infrastructure\SocialMedia.Infrastructure.csproj", "{1E38ED20-CAC4-4CEF-B2E6-7C7013A7B27E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialMedia.Infrastructure", "SocialMedia.Infrastructure\SocialMedia.Infrastructure.csproj", "{1E38ED20-CAC4-4CEF-B2E6-7C7013A7B27E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia.GraphQL", "SocialMedia.GraphQL\SocialMedia.GraphQL.csproj", "{4298B8CC-B6BD-4E45-8421-900252B44FF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialMedia.GraphQL", "SocialMedia.GraphQL\SocialMedia.GraphQL.csproj", "{4298B8CC-B6BD-4E45-8421-900252B44FF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia.Rest", "SocialMedia.Rest\SocialMedia.Rest.csproj", "{56DB90B2-9D12-4203-A478-A4A4D5B6A8E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialMedia.Rest", "SocialMedia.Rest\SocialMedia.Rest.csproj", "{56DB90B2-9D12-4203-A478-A4A4D5B6A8E5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0D05FE8D-6D8F-4518-9E65-35470F77BC48}"
 EndProject
