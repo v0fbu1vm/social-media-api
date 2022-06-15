@@ -1,5 +1,4 @@
 ﻿using System.Net.Mail;
-using System.Text;
 
 namespace SocialMedia.Core.Models.Mail
 {

@@ -8,6 +8,7 @@
         NotFound,
         BadRequest,
         Unauthorized,
-        Problem
+        Problem,
+        PartialSuccess
     }
 }

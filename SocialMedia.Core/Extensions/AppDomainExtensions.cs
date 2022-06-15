@@ -5,7 +5,7 @@ namespace SocialMedia.Core.Extensions
     public static class AppDomainExtensions
     {
         /// <summary>
-        /// Gets the assemblies for projects found in the solution.
+        /// Gets the entry and referenced assemblies.
         /// </summary>
         /// <param name="_">Represents an application domain.</param>
         /// <returns>

@@ -14,8 +14,9 @@ namespace SocialMedia.Rest.DependencyInjection
             {
                 options.SwaggerDoc("v1", new OpenApiInfo()
                 {
-                    Title = "Todo.Api",
-                    Description = "A simple Api for managing tasks.",
+                    Title = "SocialMedia.Api",
+                    Description = @"A social media api where you can interact with other people,
+                                    by posting, commenting, following and messaging.",
                     Version = "v1",
                 });
 

@@ -3,11 +3,11 @@ using MimeKit;
 using SocialMedia.Core.Interfaces;
 using SocialMedia.Core.Models.Mail;
 
-namespace SocialMedia.Infrastructure.Services
+namespace SocialMedia.Infrastructure.Helpers
 {
-    public class EmailService : IEmailService
+    public class EmailSender : IEmailSender
     {
-        /// <inheritdoc cref="IEmailService.SendEmailAsync(MailMessage)"/>
+        /// <inheritdoc cref="IEmailSender.SendEmailAsync(MailMessage)"/>
         public async Task SendEmailAsync(MailMessage mailMessage)
         {
             MimeMessage message = new MimeMessage();

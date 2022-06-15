@@ -3,7 +3,7 @@ using SocialMedia.Infrastructure;
 
 namespace SocialMedia.Rest
 {
-    internal class ProjectReferences : ICore, IInfrastructure
+    internal abstract class ProjectReferences : ICore, IInfrastructure
     {
     }
 }
