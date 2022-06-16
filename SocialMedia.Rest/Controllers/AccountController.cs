@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SocialMedia.Core.Enums;
 using SocialMedia.Core.Interfaces;
 
 namespace SocialMedia.Rest.Controllers
@@ -34,11 +33,7 @@ namespace SocialMedia.Rest.Controllers
                 return View();
             }
 
-            return result.Fault.ErrorType switch
-            {
-                ErrorType.NotFound => View("Error", "User not found."),
-                _ => View("Error", result.Fault.ErrorMessage)
-            };
+            return View("Error", result.Fault.ErrorMessage);
         }
         #endregion
     }

@@ -23,6 +23,7 @@ namespace SocialMedia.Infrastructure.DependencyInjection
 
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IFollowerService, FollowerService>();
         }
     }
 }

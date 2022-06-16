@@ -19,10 +19,6 @@ namespace SocialMedia.Core.Entities
         [MaxLength(280)]
         public string Description { get; set; } = default!;
         /// <summary>
-        /// Represents the url of the post.
-        /// </summary>
-        public string Url { get; set; } = default!;
-        /// <summary>
         /// Represents the type of the post. Whether it's a photo or video.
         /// </summary>
         public PostType Type { get; set; }

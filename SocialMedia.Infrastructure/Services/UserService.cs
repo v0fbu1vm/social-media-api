@@ -9,7 +9,7 @@ using SocialMedia.Infrastructure.Extensions;
 namespace SocialMedia.Infrastructure.Services
 {
     /// <summary>
-    /// An service for user related operation.
+    /// A service for user related operation.
     /// </summary>
     public class UserService : IDisposable, IUserService
     {

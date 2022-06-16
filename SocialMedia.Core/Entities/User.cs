@@ -23,10 +23,6 @@ namespace SocialMedia.Core.Entities
         [MaxLength(30)]
         public string LastName { get; set; } = default!;
         /// <summary>
-        /// Represents the url of the user profile image.
-        /// </summary>
-        public string? ProfileImageUrl { get; set; } = default!;
-        /// <summary>
         /// Represents when a record was added to the system.
         /// </summary>
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
