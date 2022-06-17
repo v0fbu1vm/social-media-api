@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SocialMedia.Core.Entities;
 using SocialMedia.Core.Enums;
 using SocialMedia.Core.Interfaces;
+using SocialMedia.Rest.Models;
+using AutoMapper.QueryableExtensions;
 
 namespace SocialMedia.Rest.Controllers
 {
@@ -12,10 +15,12 @@ namespace SocialMedia.Rest.Controllers
     public class FollowerController : ControllerBase
     {
         private readonly IFollowerService _service;
+        private readonly IMapper _mapper;
 
-        public FollowerController(IFollowerService service)
+        public FollowerController(IFollowerService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         #region FollowAsync
@@ -34,7 +39,7 @@ namespace SocialMedia.Rest.Controllers
 
             if (result.Succeeded)
             {
-                return new ObjectResult("Operation was successful.")
+                return new ObjectResult(_mapper.Map<FollowerItem>(result.Value))
                 {
                     StatusCode = StatusCodes.Status201Created
                 };
@@ -57,12 +62,12 @@ namespace SocialMedia.Rest.Controllers
         /// An <see cref="Microsoft.AspNetCore.Mvc.IActionResult"/>,
         /// containing details about the operation.
         /// </returns>
-        [HttpGet]
+        [HttpGet("{userId}")]
         public async Task<IActionResult> GetFolloweeAsync(string userId)
         {
             var result = await _service.GetFolloweeAsync(userId);
 
-            return result != null ? Ok(result) : NotFound();
+            return result != null ? Ok(_mapper.Map<FollowerItem>(result)) : NotFound();
         }
         #endregion
 
@@ -75,16 +80,16 @@ namespace SocialMedia.Rest.Controllers
         /// An <see cref="Microsoft.AspNetCore.Mvc.IActionResult"/>,
         /// containing details about the operation.
         /// </returns>
-        [HttpGet]
+        [HttpGet("{userId}")]
         public async Task<IActionResult> GetFollowerAsync(string userId)
         {
             var result = await _service.GetFollowerAsync(userId);
 
-            return result != null ? Ok(result) : NotFound();
+            return result != null ? Ok(_mapper.Map<FollowerItem>(result)) : NotFound();
         }
         #endregion
 
-        #region GetFollowersAsync
+        #region GetFollowers
         /// <summary>
         /// Gets a list of <see cref="Follower"/>'s.
         /// </summary>
@@ -93,13 +98,13 @@ namespace SocialMedia.Rest.Controllers
         /// containing details about the operation.
         /// </returns>
         [HttpGet]
-        public async Task<IActionResult> GetFollowersAsync()
+        public IActionResult GetFollowers()
         {
-            return Ok(await _service.GetFollowersAsync());
+            return Ok(_service.GetFollowers().ProjectTo<FollowerItem>(_mapper.ConfigurationProvider));
         }
         #endregion
 
-        #region GetFollowingAsync
+        #region GetFollowing
         /// <summary>
         /// Gets a list of <see cref="Follower"/>'s.
         /// </summary>
@@ -108,9 +113,9 @@ namespace SocialMedia.Rest.Controllers
         /// containing details about the operation.
         /// </returns>
         [HttpGet]
-        public async Task<IActionResult> GetFollowingAsync()
+        public IActionResult GetFollowing()
         {
-            return Ok(await _service.GetFollowingAsync());
+            return Ok(_service.GetFollowing().ProjectTo<FollowerItem>(_mapper.ConfigurationProvider));
         }
         #endregion
 
@@ -128,7 +133,7 @@ namespace SocialMedia.Rest.Controllers
         {
             var result = await _service.UnFollowAsync(userId);
 
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 return NoContent();
             }

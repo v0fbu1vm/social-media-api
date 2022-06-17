@@ -1,4 +1,7 @@
 ﻿using SocialMedia.Core.Interfaces;
+using SocialMedia.GraphQL.Mutations;
+using SocialMedia.GraphQL.Queries;
+using SocialMedia.GraphQL.Types;
 
 namespace SocialMedia.GraphQL.DependencyInjection
 {
@@ -14,6 +17,9 @@ namespace SocialMedia.GraphQL.DependencyInjection
                .AddDefaultTransactionScopeHandler()
                .AddQueryType()
                .AddMutationType()
+               .AddTypeExtension<FollowerQueries>()
+               .AddTypeExtension<FollowerMutations>()
+               .AddType<FollowerType>()
                .AddProjections();
         }
     }

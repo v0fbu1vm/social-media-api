@@ -11,6 +11,7 @@ namespace SocialMedia.Rest.DependencyInjection
         {
             services.AddControllersWithViews();
             services.AddEndpointsApiExplorer();
+            services.AddAutoMapper(typeof(MapperInitializer));
         }
     }
 }

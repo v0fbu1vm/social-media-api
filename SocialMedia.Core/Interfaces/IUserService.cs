@@ -1,4 +1,5 @@
-﻿using SocialMedia.Core.Models;
+﻿using SocialMedia.Core.Entities;
+using SocialMedia.Core.Models;
 using SocialMedia.Core.Objects;
 
 namespace SocialMedia.Core.Interfaces

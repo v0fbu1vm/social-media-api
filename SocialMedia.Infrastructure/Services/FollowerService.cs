@@ -26,7 +26,7 @@ namespace SocialMedia.Infrastructure.Services
         /// <item><see cref="ErrorType.BadRequest"/></item>
         /// </list>
         /// </remarks>
-        public async Task<Result<bool>> FollowAsync(string userId)
+        public async Task<Result<Follower>> FollowAsync(string userId)
         {
             if (Guid.TryParse(userId, out _) && userId != UserId())
             {
@@ -44,18 +44,18 @@ namespace SocialMedia.Infrastructure.Services
                         _dbContext.Followers.Add(follower);
                         await _dbContext.SaveChangesAsync();
 
-                        return Result<bool>.Success(true);
+                        return Result<Follower>.Success(follower);
                     }
                     catch (Exception)
                     {
-                        return Result<bool>.Failure(ErrorType.BadRequest, "User is already being followed.");
+                        return Result<Follower>.Failure(ErrorType.BadRequest, "User is already being followed.");
                     }
                 }
 
-                return Result<bool>.Failure(ErrorType.NotFound, "User not found.");
+                return Result<Follower>.Failure(ErrorType.NotFound, "User not found.");
             }
 
-            return Result<bool>.Failure(ErrorType.BadRequest, "Invalid input.");
+            return Result<Follower>.Failure(ErrorType.BadRequest, "Invalid input.");
         }
         #endregion
 
@@ -79,23 +79,21 @@ namespace SocialMedia.Infrastructure.Services
         }
         #endregion
 
-        #region GetFollowersAsync
-        /// <inheritdoc cref="IFollowerService.GetFollowersAsync"/>
-        public async Task<ICollection<Follower>> GetFollowersAsync()
+        #region GetFollowers
+        /// <inheritdoc cref="IFollowerService.GetFollowers"/>
+        public IQueryable<Follower> GetFollowers()
         {
-            return await _dbContext.Followers.Where(options => options.FolloweeId == UserId())
-                .AsNoTracking()
-                .ToListAsync();
+            return _dbContext.Followers.Where(options => options.FolloweeId == UserId())
+                .AsNoTracking();
         }
         #endregion
 
-        #region GetFollowingAsync
-        /// <inheritdoc cref="IFollowerService.GetFollowingAsync"/>
-        public async Task<ICollection<Follower>> GetFollowingAsync()
+        #region GetFollowing
+        /// <inheritdoc cref="IFollowerService.GetFollowing"/>
+        public IQueryable<Follower> GetFollowing()
         {
-            return await _dbContext.Followers.Where(options => options.UserId == UserId())
-                .AsNoTracking()
-                .ToListAsync();
+            return _dbContext.Followers.Where(options => options.UserId == UserId())
+                .AsNoTracking();
         }
         #endregion
 

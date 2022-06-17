@@ -2,6 +2,9 @@
 
 namespace SocialMedia.Core.Entities
 {
+    /// <summary>
+    /// Represents a <see cref="Follower"/>.
+    /// </summary>
     public class Follower
     {
         /// <summary>
