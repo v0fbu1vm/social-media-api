@@ -24,8 +24,8 @@ namespace SocialMedia.Core.Interfaces
         /// <param name="userId">Represents the id of the user.</param>
         /// <param name="token">Represents the email confirmation token.</param>
         /// <returns>
-        /// The <see cref="Task"/> that represents the asynchronous operation,
-        /// an <see cref="Result{bool}"/> containing details of operation.
+        /// The <see cref="Task"/> that represents the asynchronous operation.
+        /// A <see cref="Result{bool}"/>, containing detailes of operation.
         /// </returns>
         public Task<Result<bool>> ConfirmEmailAsync(string userId, string token);
     }

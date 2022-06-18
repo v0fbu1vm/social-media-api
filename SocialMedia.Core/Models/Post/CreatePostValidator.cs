@@ -11,19 +11,21 @@ namespace SocialMedia.Core.Models.Post
     {
         public CreatePostValidator()
         {
-            RuleFor(options => options.Caption)
+            RuleFor(instance => instance.Caption)
                 .MaximumLength(255);
 
-            RuleFor(options => options.Description)
+            RuleFor(instance => instance.Description)
                 .MaximumLength(280);
 
-            RuleFor(options => options.File)
+            RuleFor(instance => instance.File)
                 .NotNull()
-                .Must(IsValidContentType);
+                .Must(IsValidContentType)
+                .WithMessage("File type not allowed. Only (.png, .jpg, .mp4) are allowed.");
         }
 
+        #region IsValidContentType
         /// <summary>
-        /// Checks whether or not a correct file is given.
+        /// Checks whether or not a correct file is been given.
         /// </summary>
         /// <param name="file">Represents the file.</param>
         /// <returns>
@@ -47,5 +49,6 @@ namespace SocialMedia.Core.Models.Post
 
             return false;
         }
+        #endregion
     }
 }

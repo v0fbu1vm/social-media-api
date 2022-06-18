@@ -14,7 +14,7 @@ namespace SocialMedia.Core.Interfaces
         /// <param name="fileName">Represents the name of the file.</param>
         /// <returns>
         /// The <see cref="Task"/> that represents the asynchronous operation.
-        /// the file name.
+        /// A <see langword="string"/> that represents the file name.
         /// </returns>
         public Task<string> UploadAsync(IFormFile formFile, string fileName = "");
         /// <summary>

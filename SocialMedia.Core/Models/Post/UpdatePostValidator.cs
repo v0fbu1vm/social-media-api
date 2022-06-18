@@ -9,16 +9,16 @@ namespace SocialMedia.Core.Models.Post
     {
         public UpdatePostValidator()
         {
-            RuleFor(options => options.Id)
+            RuleFor(instance => instance.Id)
                 .Must(id => Guid.TryParse(id, out _));
 
-            RuleFor(options => options.Caption)
+            RuleFor(instance => instance.Caption)
                 .NotNull()
                 .NotEmpty()
                 .MaximumLength(255)
                 .When(instance => instance.Description == null);
 
-            RuleFor(options => options.Description)
+            RuleFor(instance => instance.Description)
                 .NotNull()
                 .NotEmpty()
                 .MaximumLength(280)

@@ -14,7 +14,8 @@ namespace SocialMedia.GraphQL.Queries
         /// <param name="userId">Represents the id of the user.</param>
         /// <param name="service">A service for <see cref="Follower"/> related operations.</param>
         /// <returns>
-        /// A <see cref="Follower"/> if found.
+        /// The <see cref="Task"/> that represents the asynchronous operation,
+        /// a <see cref="Follower"/>.
         /// </returns>
         [Authorize]
         public async Task<Follower?> GetFolloweeAsync(string userId, [Service] IFollowerService service)
@@ -30,7 +31,8 @@ namespace SocialMedia.GraphQL.Queries
         /// <param name="userId">Represents the id of the user.</param>
         /// <param name="service">A service for <see cref="Follower"/> related operations.</param>
         /// <returns>
-        /// A <see cref="Follower"/> if found.
+        /// The <see cref="Task"/> that represents the asynchronous operation,
+        /// a <see cref="Follower"/>.
         /// </returns>
         [Authorize]
         public async Task<Follower?> GetFollowerAsync(string userId, [Service] IFollowerService service)
