@@ -1,5 +1,5 @@
 ﻿using SocialMedia.Core.Entities;
-using SocialMedia.Core.Models.Auth;
+using SocialMedia.Core.Models;
 
 namespace SocialMedia.Core.Interfaces
 {

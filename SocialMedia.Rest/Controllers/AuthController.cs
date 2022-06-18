@@ -2,7 +2,7 @@
 using SocialMedia.Core.Enums;
 using SocialMedia.Core.Interfaces;
 using SocialMedia.Core.Models.Auth;
-using SocialMedia.Core.Models.Mail;
+using SocialMedia.Core.Models;
 
 namespace SocialMedia.Rest.Controllers
 {
@@ -42,7 +42,7 @@ namespace SocialMedia.Rest.Controllers
 
             if (result.Fault.ErrorType == ErrorType.PartialSuccess)
             {
-                await SendEmailConfirmationAsync(request.Email);
+                await SendEmailConfirmationTokenAsync(request.Email);
             }
 
             return result.Fault.ErrorType switch
@@ -71,7 +71,7 @@ namespace SocialMedia.Rest.Controllers
 
             if (result.Succeeded)
             {
-                await SendEmailConfirmationAsync(request.Email);
+                await SendEmailConfirmationTokenAsync(request.Email);
 
                 return new ObjectResult("Account successfully created. An email confirmation link has been sent.")
                 {
@@ -83,7 +83,7 @@ namespace SocialMedia.Rest.Controllers
         }
         #endregion
 
-        #region SendEmailConfirmationAsync
+        #region SendEmailConfirmationTokenAsync
         /// <summary>
         /// Used for sending an email confirmation token to a specified user. 
         /// </summary>
@@ -92,7 +92,7 @@ namespace SocialMedia.Rest.Controllers
         /// The <see cref="Task"/> that represents the asynchronous operation.
         /// </returns>
         [ApiExplorerSettings(IgnoreApi = true)]
-        private async Task SendEmailConfirmationAsync(string userEmail)
+        private async Task SendEmailConfirmationTokenAsync(string userEmail)
         {
             var emailConfirmationToken = await _userService.GenerateEmailConfirmationTokenAsync(userEmail);
 

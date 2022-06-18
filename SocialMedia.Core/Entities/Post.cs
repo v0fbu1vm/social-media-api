@@ -19,9 +19,9 @@ namespace SocialMedia.Core.Entities
         [MaxLength(280)]
         public string Description { get; set; } = default!;
         /// <summary>
-        /// Represents the type of the post. Whether it's a photo or video.
+        /// Represents the name of the file.
         /// </summary>
-        public PostType Type { get; set; }
+        public string FileName { get; set; } = default!;
         /// <summary>
         /// Represents the id of the <see cref="Entities.User"/> that shared this post.
         /// </summary>

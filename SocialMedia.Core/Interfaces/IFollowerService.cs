@@ -14,7 +14,7 @@ namespace SocialMedia.Core.Interfaces
         /// <param name="userId">Represents the id of the <see cref="Entities.User"/>.</param>
         /// <returns>
         /// The <see cref="Task"/> that represents the asynchronous operation,
-        /// an <see cref="Result{bool}"/>.
+        /// an <see cref="Result{Follower}"/>.
         /// </returns>
         public Task<Result<Follower>> FollowAsync(string userId);
         /// <summary>
@@ -49,7 +49,7 @@ namespace SocialMedia.Core.Interfaces
         /// </summary>
         /// <returns>
         /// The <see cref="Task"/> that represents the asynchronous operation,
-        /// an <see cref="ICollection{Follower}"/>.
+        /// an <see cref="IQueryable{Follower}"/>.
         /// </returns>
         public IQueryable<Follower> GetFollowers();
         /// <summary>
@@ -57,7 +57,7 @@ namespace SocialMedia.Core.Interfaces
         /// </summary>
         /// <returns>
         /// The <see cref="Task"/> that represents the asynchronous operation,
-        /// an <see cref="ICollection{Follower}"/>.
+        /// an <see cref="IQueryable{Follower}"/>.
         /// </returns>
         public IQueryable<Follower> GetFollowing();
     }

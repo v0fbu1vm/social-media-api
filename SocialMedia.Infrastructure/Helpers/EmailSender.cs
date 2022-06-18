@@ -1,12 +1,16 @@
 ﻿using MailKit.Net.Smtp;
 using MimeKit;
 using SocialMedia.Core.Interfaces;
-using SocialMedia.Core.Models.Mail;
+using SocialMedia.Core.Models;
 
 namespace SocialMedia.Infrastructure.Helpers
 {
+    /// <summary>
+    /// A service for email related operations.
+    /// </summary>
     public class EmailSender : IEmailSender
     {
+        #region SendEmailAsync
         /// <inheritdoc cref="IEmailSender.SendEmailAsync(MailMessage)"/>
         public async Task SendEmailAsync(MailMessage mailMessage)
         {
@@ -34,5 +38,6 @@ namespace SocialMedia.Infrastructure.Helpers
             await client.SendAsync(message);
             client.Disconnect(true);
         }
+        #endregion
     }
 }

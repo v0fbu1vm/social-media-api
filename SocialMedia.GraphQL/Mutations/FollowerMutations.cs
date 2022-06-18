@@ -16,8 +16,8 @@ namespace SocialMedia.GraphQL.Mutations
         /// <param name="userId">Represents the id of the user.</param>
         /// <param name="service">A service for <see cref="SocialMedia.Core.Entities.Follower"/> related operations.</param>
         /// <returns>
-        /// A <see cref="Response{bool}"/>, containing the details of operation.
-        /// </returns
+        /// A <see cref="Response{Follower}"/>, containing the details of operation.
+        /// </returns>
         [Authorize]
         public async Task<Response<Follower>> FollowAsync(string userId, [Service] IFollowerService service)
         {
@@ -44,7 +44,7 @@ namespace SocialMedia.GraphQL.Mutations
         /// <param name="service">A service for <see cref="SocialMedia.Core.Entities.Follower"/> related operations.</param>
         /// <returns>
         /// A <see cref="Response{bool}"/>, containing the details of operation.
-        /// </returns
+        /// </returns>
         [Authorize]
         public async Task<Response<bool>> UnFollowAsync(string userId, [Service] IFollowerService service)
         {

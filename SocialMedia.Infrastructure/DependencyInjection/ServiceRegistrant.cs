@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Azure.Storage.Blobs;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SocialMedia.Core.Interfaces;
@@ -18,12 +19,15 @@ namespace SocialMedia.Infrastructure.DependencyInjection
             services.AddHttpContextAccessor();
             services.AddDbContextFactory<DatabaseContext>(options => options.UseSqlServer(AppSettings.ConnectionStringSqlServer));
 
+            services.AddSingleton(options => new BlobServiceClient(AppSettings.AzureBlobStorageConnectionString));
+            services.AddSingleton<IStorageManager, StorageManager>();
             services.AddSingleton<IEmailSender, EmailSender>();
             services.AddSingleton<ITokenProvider, TokenProvider>();
 
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IFollowerService, FollowerService>();
+            services.AddTransient<IPostService, PostService>();
         }
     }
 }

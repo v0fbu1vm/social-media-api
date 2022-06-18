@@ -74,9 +74,9 @@ namespace SocialMedia.Infrastructure.DependencyInjection
                     {
                         ValidateIssuer = true,
                         ValidateAudience = true,
-                        ValidAudience = AppSettings.Audience,
-                        ValidIssuer = AppSettings.Issuer,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(AppSettings.SecurityKey)),
+                        ValidAudience = AppSettings.JwtAudience,
+                        ValidIssuer = AppSettings.JwtIssuer,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(AppSettings.JwtSecurityKey)),
                         ValidateIssuerSigningKey = true,
                         ValidateLifetime = true
                     };

@@ -1,6 +1,6 @@
 ﻿using System.Net.Mail;
 
-namespace SocialMedia.Core.Models.Mail
+namespace SocialMedia.Core.Models
 {
     /// <summary>
     /// Represents an email message that can be sent using any smtp client.

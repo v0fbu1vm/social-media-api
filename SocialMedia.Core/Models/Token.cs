@@ -1,4 +1,4 @@
-﻿namespace SocialMedia.Core.Models.Auth
+﻿namespace SocialMedia.Core.Models
 {
     /// <summary>
     /// Represents a Token. Where a token is imbedded into it,

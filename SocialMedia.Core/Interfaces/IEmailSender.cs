@@ -1,4 +1,4 @@
-﻿using SocialMedia.Core.Models.Mail;
+﻿using SocialMedia.Core.Models;
 
 namespace SocialMedia.Core.Interfaces
 {

@@ -19,6 +19,8 @@ namespace SocialMedia.Infrastructure.Services
             _dbContext = dbContextFactory.CreateDbContext();
             _contextAccessor = contextAccessor;
         }
+
+        #region UserId
         /// <summary>
         /// Gets the id of the authenticated user.
         /// </summary>
@@ -38,6 +40,7 @@ namespace SocialMedia.Infrastructure.Services
                 return string.Empty;
             }
         }
+        #endregion
 
         public ValueTask DisposeAsync()
         {
