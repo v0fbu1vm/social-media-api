@@ -13,8 +13,8 @@ namespace SocialMedia.Core.Interfaces
         /// </summary>
         /// <param name="userId">Represents the id of the <see cref="Entities.User"/>.</param>
         /// <returns>
-        /// The <see cref="Task"/> that represents the asynchronous operation,
-        /// an <see cref="Result{Follower}"/>.
+        /// The <see cref="Task"/> that represents the asynchronous operation.
+        /// A <see cref="Result{Follower}"/>, containing detailes of operation.
         /// </returns>
         public Task<Result<Follower>> FollowAsync(string userId);
         /// <summary>
@@ -22,8 +22,8 @@ namespace SocialMedia.Core.Interfaces
         /// </summary>
         /// <param name="userId">Represents the id of the <see cref="Entities.User"/>.</param>
         /// <returns>
-        /// The <see cref="Task"/> that represents the asynchronous operation,
-        /// an <see cref="Result{bool}"/>.
+        /// The <see cref="Task"/> that represents the asynchronous operation.
+        /// A <see cref="Result{bool}"/>, containing detailes of operation.
         /// </returns>
         public Task<Result<bool>> UnFollowAsync(string userId);
         /// <summary>

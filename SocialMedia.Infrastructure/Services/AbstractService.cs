@@ -25,7 +25,7 @@ namespace SocialMedia.Infrastructure.Services
         /// Gets the id of the authenticated user.
         /// </summary>
         /// <returns>
-        /// The id of the user.
+        /// A <see langword="string"/> that represents the id of the user.
         /// </returns>
         protected string UserId()
         {

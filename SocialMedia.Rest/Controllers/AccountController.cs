@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SocialMedia.Core.Interfaces;
 
 namespace SocialMedia.Rest.Controllers
 {
     [Route("api/[controller]/[action]")]
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly IUserService _service;
@@ -24,6 +26,7 @@ namespace SocialMedia.Rest.Controllers
         /// containing details about the operation.
         /// </returns>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmail(string userId, string token)
         {
             var result = await _service.ConfirmEmailAsync(userId, token);

@@ -14,7 +14,8 @@ namespace SocialMedia.Core.Interfaces
         /// </summary>
         /// <param name="request">Represents the required data for posting.</param>
         /// <returns>
-        /// A <see cref="Result{Post}"/>, containing the details of operation.
+        /// The <see cref="Task"/> that represents the asynchronous operation.
+        /// A <see cref="Result{Post}"/>, containing detailes of operation.
         /// </returns>
         public Task<Result<Post>> PostAsync(CreatePostRequest request);
     }

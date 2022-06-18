@@ -30,9 +30,19 @@ namespace SocialMedia.Core.Models.Auth
 
         }
 
+        #region NameMust
+        /// <summary>
+        /// Checks whether name contains letters only.
+        /// </summary>
+        /// <param name="name">Represents a name.</param>
+        /// <returns>
+        /// <see langword="true"/> if the name only consists of letters,
+        /// otherwise <see langword="false"/>.
+        /// </returns>
         private bool NameMust(string name)
         {
             return name.All(c => char.IsLetter(c));
         }
+        #endregion
     }
 }
