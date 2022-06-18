@@ -31,4 +31,7 @@ dotnet ef database update --project SocialMedia.Infrastructure --startup-project
 - Voyager => `https://localhost:port/graphql-voyager`
 - Rest => `https://localhost:port/swagger/index.html`
 
+## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/WaadSulaiman/SocialMedia.Api/blob/main/LICENSE.md)
+
 Enjoy 👍.
