@@ -32,7 +32,7 @@ namespace SocialMedia.Rest.Controllers
         {
             var result = await _service.GetPostByIdAsync(id);
 
-            if(result != null)
+            if (result != null)
             {
                 return Ok(result);
             }
@@ -55,7 +55,7 @@ namespace SocialMedia.Rest.Controllers
         {
             var result = await _service.GetPostContentAsync(fileName);
 
-            if(result != null)
+            if (result != null)
             {
                 return Ok(result.FileStream);
             }
@@ -89,6 +89,34 @@ namespace SocialMedia.Rest.Controllers
             return result.Fault.ErrorType switch
             {
                 ErrorType.Problem => Problem(result.Fault.ErrorMessage),
+                _ => BadRequest(result.Fault.ErrorMessage)
+            };
+        }
+        #endregion
+
+        #region UpdatePostAsync
+        /// <summary>
+        /// An action for updating a post.
+        /// </summary>
+        /// <param name="id">Represents the id of the post.</param>
+        /// <param name="request">Represents the required data for updating a post.</param>
+        /// <returns>
+        /// An <see cref="Microsoft.AspNetCore.Mvc.IActionResult"/>,
+        /// containing details about the operation.
+        /// </returns>
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdatePostAsync(string id, [FromBody] UpdatePostRequest request)
+        {
+            var result = await _service.UpdatePostAsync(id, request);
+
+            if (result.Succeeded)
+            {
+                return Ok(result.Value);
+            }
+
+            return result.Fault.ErrorType switch
+            {
+                ErrorType.NotFound => NotFound(result.Fault.ErrorMessage),
                 _ => BadRequest(result.Fault.ErrorMessage)
             };
         }

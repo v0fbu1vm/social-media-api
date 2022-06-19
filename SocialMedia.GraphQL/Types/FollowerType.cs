@@ -2,6 +2,9 @@
 
 namespace SocialMedia.GraphQL.Types
 {
+    /// <summary>
+    /// Defining types for <see cref="Follower"/>. This helps define the schema.
+    /// </summary>
     public class FollowerType : ObjectType<Follower>
     {
         protected override void Configure(IObjectTypeDescriptor<Follower> descriptor)

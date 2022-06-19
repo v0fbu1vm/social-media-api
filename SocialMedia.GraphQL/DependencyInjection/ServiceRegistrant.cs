@@ -19,7 +19,10 @@ namespace SocialMedia.GraphQL.DependencyInjection
                .AddMutationType()
                .AddTypeExtension<FollowerQueries>()
                .AddTypeExtension<FollowerMutations>()
+               .AddTypeExtension<PostQueries>()
+               .AddTypeExtension<PostMutations>()
                .AddType<FollowerType>()
+               .AddType<PostType>()
                .AddProjections();
         }
     }

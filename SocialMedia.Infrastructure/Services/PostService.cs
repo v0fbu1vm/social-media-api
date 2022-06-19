@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SocialMedia.Core.Entities;
 using SocialMedia.Core.Enums;
+using SocialMedia.Core.Extensions;
 using SocialMedia.Core.Interfaces;
 using SocialMedia.Core.Models.Post;
 using SocialMedia.Core.Objects;
@@ -75,11 +76,45 @@ namespace SocialMedia.Infrastructure.Services
         }
         #endregion
 
+        #region UpdatePostAsync
+        /// <inheritdoc cref="IPostService.UpdatePostAsync(string, UpdatePostRequest)"/>
+        public async Task<Result<Post>> UpdatePostAsync(string postId, UpdatePostRequest request)
+        {
+            var validator = new UpdatePostValidator();
+            var validationResult = validator.Validate(request);
+
+            if (validationResult.IsValid)
+            {
+                if(Guid.TryParse(postId, out _) && postId == request.Id)
+                {
+                    var post = await _dbContext.Posts.FirstOrDefaultAsync(options => options.Id == postId && options.UserId == UserId());
+
+                    if(post != null)
+                    {
+                        post.Caption = request.Caption ?? post.Caption;
+                        post.Description = request.Description ?? post.Description;
+                        post.DateModified = DateTime.UtcNow;
+
+                        await _dbContext.SaveChangesAsync();
+                        return Result<Post>.Success(post);
+                    }
+
+                    return Result<Post>.Failure(ErrorType.NotFound, "Post not found.");
+                }
+
+                return Result<Post>.Failure(ErrorType.BadRequest, "Invalid id.");
+            }
+
+            return Result<Post>.Failure(ErrorType.BadRequest, validationResult.ErrorMessage());
+        }
+        #endregion
+
         #region DeletePostAsync
         /// <inheritdoc cref="IPostService.DeletePostAsync(string)"/>
         /// <remarks>
         /// May produce the following errors.
         /// <list type="bullet">
+        /// <item><see cref="ErrorType.Problem"/></item>
         /// <item><see cref="ErrorType.NotFound"/></item>
         /// <item><see cref="ErrorType.BadRequest"/></item>
         /// </list>

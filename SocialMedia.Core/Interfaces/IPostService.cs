@@ -38,6 +38,16 @@ namespace SocialMedia.Core.Interfaces
         /// </returns>
         public Task<Result<Post>> PostAsync(CreatePostRequest request);
         /// <summary>
+        /// Used for updating a post.
+        /// </summary>
+        /// <param name="postId">Represents the id of the post.</param>
+        /// <param name="request">Represents the required data for updating a post.</param>
+        /// <returns>
+        /// The <see cref="Task"/> that represents the asynchronous operation.
+        /// A <see cref="Result{Post}"/>, containing detailes of operation.
+        /// </returns>
+        public Task<Result<Post>> UpdatePostAsync(string postId, UpdatePostRequest request);
+        /// <summary>
         /// Used for deleting a post.
         /// </summary>
         /// <param name="id">Represents the id of the post.</param>
