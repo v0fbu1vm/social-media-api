@@ -11,6 +11,15 @@ namespace SocialMedia.Core.Interfaces
     public interface IPostService
     {
         /// <summary>
+        /// Used for getting a list of posts shared by friends.
+        /// </summary>
+        /// <param name="amount">Represents the amount of posts that should be included.</param>
+        /// <returns>
+        /// The <see cref="Task"/> that represents the asynchronous operation,
+        /// an <see cref="ICollection{Post}"/>.
+        /// </returns>
+        public Task<ICollection<Post>> GetRelevantPostsAsync(int amount);
+        /// <summary>
         /// Used for getting a post.
         /// </summary>
         /// <param name="id">Represents the id of the post.</param>

@@ -18,6 +18,22 @@ namespace SocialMedia.Rest.Controllers
             _service = service;
         }
 
+        #region GetRelevantPostsAsync
+        /// <summary>
+        /// An action for getting a list of posts shared by friends.
+        /// </summary>
+        /// <param name="amount">Represents the amount of posts that should be included.</param>
+        /// <returns>
+        /// An <see cref="Microsoft.AspNetCore.Mvc.IActionResult"/>,
+        /// containing details about the operation.
+        /// </returns>
+        [HttpGet]
+        public async Task<IActionResult> GetRelevantPostsAsync(int amount)
+        {
+            return Ok(await _service.GetRelevantPostsAsync(amount));
+        }
+        #endregion
+
         #region GetPostAsync
         /// <summary>
         /// An action for getting a post.

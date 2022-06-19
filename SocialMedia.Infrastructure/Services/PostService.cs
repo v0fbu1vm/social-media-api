@@ -23,6 +23,18 @@ namespace SocialMedia.Infrastructure.Services
             _storageManager = storageManager;
         }
 
+        #region GetRelevantPostsAsync
+        /// <inheritdoc cref="IPostService.GetRelevantPostsAsync(int)"/>
+        public async Task<ICollection<Post>> GetRelevantPostsAsync(int amount)
+        {
+            return amount > 0 ? await _dbContext.Posts
+                .Where(options => options.User.Following.Any(options => options.UserId == UserId()))
+                .OrderByDescending(options => options.DateCreated)
+                .Take(amount)
+                .ToListAsync() : new List<Post>();
+        }
+        #endregion
+
         #region GetPostByIdAsync
         /// <inheritdoc cref="IPostService.GetPostByIdAsync(string)"/>
         public async Task<Post?> GetPostByIdAsync(string id)
@@ -85,11 +97,11 @@ namespace SocialMedia.Infrastructure.Services
 
             if (validationResult.IsValid)
             {
-                if(Guid.TryParse(postId, out _) && postId == request.Id)
+                if (Guid.TryParse(postId, out _) && postId == request.Id)
                 {
                     var post = await _dbContext.Posts.FirstOrDefaultAsync(options => options.Id == postId && options.UserId == UserId());
 
-                    if(post != null)
+                    if (post != null)
                     {
                         post.Caption = request.Caption ?? post.Caption;
                         post.Description = request.Description ?? post.Description;
