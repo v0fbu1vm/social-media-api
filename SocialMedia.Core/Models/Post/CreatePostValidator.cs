@@ -44,7 +44,8 @@ namespace SocialMedia.Core.Models.Post
 
             foreach (var allowedContentType in allowedContentTypes)
             {
-                return type.EndsWith(allowedContentType);
+                if(type.EndsWith(allowedContentType))
+                    return true;
             }
 
             return false;

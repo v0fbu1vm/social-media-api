@@ -1,5 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using SocialMedia.Core.Extensions;
 using SocialMedia.Core.Interfaces;
 
@@ -16,6 +17,20 @@ namespace SocialMedia.Infrastructure.Helpers
         {
             _containerClient = serviceClient.GetBlobContainerClient(AppSettings.AzureBlobStorageContainer);
         }
+
+        #region DownloadFileAsync
+        /// <inheritdoc cref="IStorageManager.DownloadFileAsync(string)"/>
+        public async Task<FileStreamResult?> DownloadFileAsync(string fileName)
+        {
+            var blobClient = _containerClient.GetBlobClient(fileName);
+            
+            if (blobClient == null)
+                return null;
+
+            var file = await blobClient.DownloadStreamingAsync();
+            return new FileStreamResult(file.Value.Content, file.Value.Details.ContentType);
+        }
+        #endregion
 
         #region DeleteAsync
         /// <inheritdoc cref="IStorageManager.DeleteAsync(string)"/>

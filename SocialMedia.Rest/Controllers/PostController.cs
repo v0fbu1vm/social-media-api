@@ -18,6 +18,52 @@ namespace SocialMedia.Rest.Controllers
             _service = service;
         }
 
+        #region GetPostAsync
+        /// <summary>
+        /// An action for getting a post.
+        /// </summary>
+        /// <param name="id">Represents the id of the post.</param>
+        /// <returns>
+        /// An <see cref="Microsoft.AspNetCore.Mvc.IActionResult"/>,
+        /// containing details about the operation.
+        /// </returns>
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPostAsync(string id)
+        {
+            var result = await _service.GetPostByIdAsync(id);
+
+            if(result != null)
+            {
+                return Ok(result);
+            }
+
+            return NotFound("Post could not be found.");
+        }
+        #endregion
+
+        #region GetPostContentAsync
+        /// <summary>
+        /// An action for getting the content of a post.
+        /// </summary>
+        /// <param name="fileName">Represents the name of the file.</param>
+        /// <returns>
+        /// An <see cref="Microsoft.AspNetCore.Mvc.IActionResult"/>,
+        /// containing details about the operation.
+        /// </returns>
+        [HttpGet("{fileName}")]
+        public async Task<IActionResult> GetPostContentAsync(string fileName)
+        {
+            var result = await _service.GetPostContentAsync(fileName);
+
+            if(result != null)
+            {
+                return Ok(result.FileStream);
+            }
+
+            return NotFound();
+        }
+        #endregion
+
         #region PostAsync
         /// <summary>
         /// An action for posting.
@@ -43,6 +89,34 @@ namespace SocialMedia.Rest.Controllers
             return result.Fault.ErrorType switch
             {
                 ErrorType.Problem => Problem(result.Fault.ErrorMessage),
+                _ => BadRequest(result.Fault.ErrorMessage)
+            };
+        }
+        #endregion
+
+        #region DeletePostAsync
+        /// <summary>
+        /// An action for deleting a post.
+        /// </summary>
+        /// <param name="id">Represents the id of the post.</param>
+        /// <returns>
+        /// An <see cref="Microsoft.AspNetCore.Mvc.IActionResult"/>,
+        /// containing details about the operation.
+        /// </returns>
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePostAsync(string id)
+        {
+            var result = await _service.DeletePostAsync(id);
+
+            if (result.Succeeded)
+            {
+                return NoContent();
+            }
+
+            return result.Fault.ErrorType switch
+            {
+                ErrorType.Problem => Problem(result.Fault.ErrorMessage),
+                ErrorType.NotFound => NotFound(result.Fault.ErrorMessage),
                 _ => BadRequest(result.Fault.ErrorMessage)
             };
         }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SocialMedia.Core.Interfaces
 {
@@ -7,6 +8,15 @@ namespace SocialMedia.Core.Interfaces
     /// </summary>
     public interface IStorageManager
     {
+        /// <summary>
+        /// For downloading files.
+        /// </summary>
+        /// <param name="fileName">Represents the name of the file.</param>
+        /// <returns>
+        /// The <see cref="Task"/> that represents the asynchronous operation,
+        /// a <see cref="FileStreamResult"/>.
+        /// </returns>
+        public Task<FileStreamResult?> DownloadFileAsync(string fileName); 
         /// <summary>
         /// For uploading a file to storage.
         /// </summary>
