@@ -18,6 +18,56 @@ namespace SocialMedia.Rest.Controllers
             _service = service;
         }
 
+        #region GetCommentsAsync
+        /// <summary>
+        /// An action for getting a list of comments, commented by the authenticated user.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="Microsoft.AspNetCore.Mvc.IActionResult"/>,
+        /// containing details about the operation.
+        /// </returns>
+        [HttpGet]
+        public async Task<IActionResult> GetCommentsAsync()
+        {
+            return Ok(await _service.GetCommentsAsync());
+        }
+        #endregion
+
+        #region GetCommentsForPostAsync
+        /// <summary>
+        /// An action for getting a list of comments, commented on a post.
+        /// </summary>
+        /// <param name="postId">Represents the id of the post.</param>
+        /// <param name="amount">Represents the amount of comments that should be include.</param>
+        /// <returns>
+        /// An <see cref="Microsoft.AspNetCore.Mvc.IActionResult"/>,
+        /// containing details about the operation.
+        /// </returns>
+        [HttpGet("{postId}")]
+        public async Task<IActionResult> GetCommentsForPostAsync(string postId, int amount)
+        {
+            return Ok(await _service.GetCommentsForPostAsync(postId, amount));
+        }
+        #endregion
+
+        #region GetCommentAsync
+        /// <summary>
+        /// An action for getting a comment by id.
+        /// </summary>
+        /// <param name="id">Represents the id of the comment.</param>
+        /// <returns>
+        /// An <see cref="Microsoft.AspNetCore.Mvc.IActionResult"/>,
+        /// containing details about the operation.
+        /// </returns>
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCommentAsync(string id)
+        {
+            var result = await _service.GetCommentByIdAsync(id);
+            
+            return result != null ? Ok(result) : NotFound();
+        }
+        #endregion
+
         #region CommentAsync
         /// <summary>
         /// An action for commenting on a post.

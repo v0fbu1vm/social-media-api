@@ -10,6 +10,33 @@ namespace SocialMedia.Core.Interfaces
     public interface ICommentService
     {
         /// <summary>
+        /// Gets all comments, commented by the authenticated user.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/> that represents the asynchronous operation,
+        /// a <see cref="ICollection{Comment}"/>.
+        /// </returns>
+        public Task<ICollection<Comment>> GetCommentsAsync();
+        /// <summary>
+        /// Gets a list of comments, commented on a post.
+        /// </summary>
+        /// <param name="postId">Represents the id of the post.</param>
+        /// <param name="amount">Represents the amount of comments that should be included.</param>
+        /// <returns>
+        /// The <see cref="Task"/> that represents the asynchronous operation,
+        /// a <see cref="ICollection{Comment}"/>.
+        /// </returns>
+        public Task<ICollection<Comment>> GetCommentsForPostAsync(string postId, int amount);
+        /// <summary>
+        /// Used for getting a comment.
+        /// </summary>
+        /// <param name="id">Represents the id of the comment.</param>
+        /// <returns>
+        /// The <see cref="Task"/> that represents the asynchronous operation,
+        /// a <see cref="Comment"/>.
+        /// </returns>
+        public Task<Comment?> GetCommentByIdAsync(string id);
+        /// <summary>
         /// Used for commenting on a post.
         /// </summary>
         /// <param name="request">Represents the required data for commenting on a post.</param>

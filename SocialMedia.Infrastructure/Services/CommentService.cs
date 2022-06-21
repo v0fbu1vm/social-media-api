@@ -19,6 +19,40 @@ namespace SocialMedia.Infrastructure.Services
         {
         }
 
+        #region GetCommentsAsync
+        /// <inheritdoc cref="ICommentService.GetCommentsAsync"/>
+        public async Task<ICollection<Comment>> GetCommentsAsync()
+        {
+            return await _dbContext.Comments
+                .Where(options => options.UserId == UserId())
+                .OrderByDescending(options => options.DateCreated)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+        #endregion
+
+        #region GetCommentsForPostAsync
+        /// <inheritdoc cref="ICommentService.GetCommentsForPostAsync(string, int)"/>
+        public async Task<ICollection<Comment>> GetCommentsForPostAsync(string postId, int amount)
+        {
+            return Guid.TryParse(postId, out _) && amount > 0 ? await _dbContext.Comments
+                .Where(options => options.PostId == postId)
+                .OrderByDescending(options => options.DateCreated)
+                .Take(amount)
+                .AsNoTracking()
+                .ToListAsync() : new List<Comment>();
+        }
+        #endregion
+
+        #region GetCommentByIdAsync
+        /// <inheritdoc cref="ICommentService.GetCommentByIdAsync(string)"/>
+        public async Task<Comment?> GetCommentByIdAsync(string id)
+        {
+            return Guid.TryParse(id, out _) ? await _dbContext.Comments
+                .FindAsync(id) : null;
+        }
+        #endregion
+
         #region CommentAsync
         /// <inheritdoc cref="ICommentService.CommentAsync(CreateCommentRequest)"/>
         /// <remarks>
