@@ -19,6 +19,42 @@ namespace SocialMedia.Infrastructure.Services
         {
         }
 
+        #region GetMessageByIdAsync
+        /// <inheritdoc cref="IMessageService.GetMessageByIdAsync(string)"/>
+        public async Task<Message?> GetMessageByIdAsync(string id)
+        {
+            return Guid.TryParse(id, out _) ? await _dbContext.Messages
+                .FirstOrDefaultAsync(options => options.Id == id && (options.SenderId == UserId() || options.RecipientId == UserId()))
+                : null;
+        }
+        #endregion
+
+        #region GetMessagesSentToAsync
+        /// <inheritdoc cref="IMessageService.GetMessagesSentToAsync(string)"/>
+        public async Task<ICollection<Message>> GetMessagesSentToAsync(string userId)
+        {
+            return Guid.TryParse(userId, out _) ? await _dbContext.Messages
+                .Where(options => options.SenderId == UserId() && options.RecipientId == userId)
+                .OrderByDescending(options => options.DateCreated)
+                .AsNoTracking()
+                .ToListAsync()
+                : new List<Message>();
+        }
+        #endregion
+
+        #region GetMessagesReceivedFromAsync
+        /// <inheritdoc cref="IMessageService.GetMessagesReceivedFromAsync(string)"/>
+        public async Task<ICollection<Message>> GetMessagesReceivedFromAsync(string userId)
+        {
+            return Guid.TryParse(userId, out _) ? await _dbContext.Messages
+                .Where(options => options.SenderId == userId && options.RecipientId == UserId())
+                .OrderByDescending(options => options.DateCreated)
+                .AsNoTracking()
+                .ToListAsync()
+                : new List<Message>();
+        }
+        #endregion
+
         #region MessageAsync
         /// <inheritdoc cref="IMessageService.MessageAsync(CreateMessageRequest)"/>
         /// <remarks>
@@ -63,6 +99,35 @@ namespace SocialMedia.Infrastructure.Services
             }
 
             return Result<Message>.Failure(ErrorType.BadRequest, validationResult.ErrorMessage());
+        }
+        #endregion
+
+        #region DeleteMessageAsync
+        /// <inheritdoc cref="IMessageService.DeleteMessageAsync(string)"/>
+        /// <remarks>
+        /// May produce the following errors.
+        /// <list type="bullet">
+        /// <item><see cref="ErrorType.NotFound"/></item>
+        /// <item><see cref="ErrorType.BadRequest"/></item>
+        /// </list>
+        /// </remarks>
+        public async Task<Result<bool>> DeleteMessageAsync(string id)
+        {
+            if (Guid.TryParse(id, out _))
+            {
+                var message = await _dbContext.Messages.FirstOrDefaultAsync(options => options.Id == id && options.SenderId == UserId());
+                if (message != null)
+                {
+                    _dbContext.Messages.Remove(message);
+                    await _dbContext.SaveChangesAsync();
+
+                    return Result<bool>.Success(true);
+                }
+
+                return Result<bool>.Failure(ErrorType.NotFound, "Message not found.");
+            }
+
+            return Result<bool>.Failure(ErrorType.BadRequest, "Invalid input.");
         }
         #endregion
     }

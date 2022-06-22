@@ -5,7 +5,6 @@ using SocialMedia.Core.Enums;
 using SocialMedia.Core.Interfaces;
 using SocialMedia.Core.Models.Message;
 using SocialMedia.Core.Objects;
-using SocialMedia.GraphQL.Subscriptions;
 
 namespace SocialMedia.GraphQL.Mutations
 {
@@ -39,6 +38,34 @@ namespace SocialMedia.GraphQL.Mutations
                 ErrorType.Problem => Response<Message>.Problem(result.Fault.ErrorMessage),
                 ErrorType.NotFound => Response<Message>.NotFound(result.Fault.ErrorMessage),
                 _ => Response<Message>.BadRequest(result.Fault.ErrorMessage)
+            };
+        }
+        #endregion
+
+        #region DeleteMessageAsync
+        /// <summary>
+        /// Used for deleting a message.
+        /// </summary>
+        /// <param name="id">Represents the id of the message.</param>
+        /// <param name="service">A service for <see cref="Message"/> related operations.</param>
+        /// <returns>
+        /// The <see cref="Task"/> that represents the asynchronous operation.
+        /// A <see cref="Response{bool}"/>, containing detailes of operation.
+        /// </returns>
+        [Authorize]
+        public async Task<Response<bool>> DeleteMessageAsync(string id, [Service] IMessageService service)
+        {
+            var result = await service.DeleteMessageAsync(id);
+
+            if (result.Succeeded)
+            {
+                return Response<bool>.NoContent(result.Value);
+            }
+
+            return result.Fault.ErrorType switch
+            {
+                ErrorType.NotFound => Response<bool>.NotFound(result.Fault.ErrorMessage),
+                _ => Response<bool>.BadRequest(result.Fault.ErrorMessage)
             };
         }
         #endregion
