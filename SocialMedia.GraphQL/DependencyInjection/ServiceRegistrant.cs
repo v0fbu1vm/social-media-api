@@ -1,6 +1,7 @@
 ﻿using SocialMedia.Core.Interfaces;
 using SocialMedia.GraphQL.Mutations;
 using SocialMedia.GraphQL.Queries;
+using SocialMedia.GraphQL.Subscriptions;
 using SocialMedia.GraphQL.Types;
 
 namespace SocialMedia.GraphQL.DependencyInjection
@@ -17,16 +18,20 @@ namespace SocialMedia.GraphQL.DependencyInjection
                .AddDefaultTransactionScopeHandler()
                .AddQueryType()
                .AddMutationType()
+               .AddSubscriptionType()
                .AddTypeExtension<FollowerQueries>()
                .AddTypeExtension<FollowerMutations>()
                .AddTypeExtension<PostQueries>()
                .AddTypeExtension<PostMutations>()
                .AddTypeExtension<CommentQueries>()
                .AddTypeExtension<CommentMutations>()
+               .AddTypeExtension<MessageMutations>()
+               .AddTypeExtension<MessageSubscriptions>()
                .AddType<FollowerType>()
                .AddType<PostType>()
                .AddType<CommentType>()
-               .AddProjections();
+               .AddProjections()
+               .AddInMemorySubscriptions();
         }
     }
 }

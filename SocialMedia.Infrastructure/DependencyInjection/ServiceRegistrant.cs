@@ -22,13 +22,14 @@ namespace SocialMedia.Infrastructure.DependencyInjection
             services.AddSingleton(options => new BlobServiceClient(AppSettings.AzureBlobStorageConnectionString));
             services.AddSingleton<IStorageManager, StorageManager>();
             services.AddSingleton<IEmailSender, EmailSender>();
-            services.AddSingleton<ITokenProvider, TokenProvider>();
+            services.AddSingleton<ITokenHandler, TokenHandler>();
 
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IFollowerService, FollowerService>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<ICommentService, CommentService>();
+            services.AddTransient<IMessageService, MessageService>();
         }
     }
 }

@@ -11,6 +11,8 @@
     <PackageReference Include="HotChocolate.AspNetCore" Version="12.10.0" />
     <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="12.10.0" />
     <PackageReference Include="HotChocolate.Data.EntityFramework" Version="12.10.0" />
+    <PackageReference Include="HotChocolate.Subscriptions" Version="12.11.1" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup>

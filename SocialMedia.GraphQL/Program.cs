@@ -12,6 +12,8 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
+app.UseWebSockets();
+
 app.MapGraphQL();
 
 app.MapGraphQLVoyager("graphql-voyager");

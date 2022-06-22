@@ -16,9 +16,9 @@ namespace SocialMedia.Infrastructure.Services
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly ITokenProvider _tokenProvider;
+        private readonly ITokenHandler _tokenProvider;
 
-        public AuthService(UserManager<User> userManager, SignInManager<User> signInManager, ITokenProvider tokenProvider)
+        public AuthService(UserManager<User> userManager, SignInManager<User> signInManager, ITokenHandler tokenProvider)
         {
             _userManager = userManager;
             _signInManager = signInManager;

@@ -11,10 +11,10 @@ namespace SocialMedia.Infrastructure.Helpers
     /// <summary>
     /// A service for token related operations.
     /// </summary>
-    public class TokenProvider : ITokenProvider
+    public class TokenHandler : ITokenHandler
     {
         #region GenerateToken
-        /// <inheritdoc cref="ITokenProvider.GenerateToken(User)"/>
+        /// <inheritdoc cref="ITokenHandler.GenerateToken(User)"/>
         public Token GenerateToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -42,6 +42,28 @@ namespace SocialMedia.Infrastructure.Helpers
                 Content = tokenString,
                 ExpirationDate = expires,
             };
+        }
+        #endregion
+        
+        #region IsTokenValid
+        /// <inheritdoc cref="ITokenHandler.IsTokenValid(string)"/>
+        public bool IsTokenValid(string token)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = tokenHandler.ReadJwtToken(token);
+
+            return jwtSecurityToken.ValidTo > DateTime.UtcNow;
+        }
+        #endregion
+
+        #region GetClaims
+        /// <inheritdoc cref="ITokenHandler.GetClaims(string)"/>
+        public IEnumerable<Claim> GetClaims(string token)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = tokenHandler.ReadJwtToken(token);
+
+            return jwtSecurityToken.Claims;
         }
         #endregion
     }
