@@ -20,6 +20,7 @@ namespace SocialMedia.Infrastructure.Services
         }
 
         #region GetMessageByIdAsync
+
         /// <inheritdoc cref="IMessageService.GetMessageByIdAsync(string)"/>
         public async Task<Message?> GetMessageByIdAsync(string id)
         {
@@ -27,9 +28,11 @@ namespace SocialMedia.Infrastructure.Services
                 .FirstOrDefaultAsync(options => options.Id == id && (options.SenderId == UserId() || options.RecipientId == UserId()))
                 : null;
         }
-        #endregion
+
+        #endregion GetMessageByIdAsync
 
         #region GetMessagesSentToAsync
+
         /// <inheritdoc cref="IMessageService.GetMessagesSentToAsync(string)"/>
         public async Task<ICollection<Message>> GetMessagesSentToAsync(string userId)
         {
@@ -40,9 +43,11 @@ namespace SocialMedia.Infrastructure.Services
                 .ToListAsync()
                 : new List<Message>();
         }
-        #endregion
+
+        #endregion GetMessagesSentToAsync
 
         #region GetMessagesReceivedFromAsync
+
         /// <inheritdoc cref="IMessageService.GetMessagesReceivedFromAsync(string)"/>
         public async Task<ICollection<Message>> GetMessagesReceivedFromAsync(string userId)
         {
@@ -53,9 +58,11 @@ namespace SocialMedia.Infrastructure.Services
                 .ToListAsync()
                 : new List<Message>();
         }
-        #endregion
+
+        #endregion GetMessagesReceivedFromAsync
 
         #region MessageAsync
+
         /// <inheritdoc cref="IMessageService.MessageAsync(CreateMessageRequest)"/>
         /// <remarks>
         /// May produce the following errors.
@@ -100,9 +107,11 @@ namespace SocialMedia.Infrastructure.Services
 
             return Result<Message>.Failure(ErrorType.BadRequest, validationResult.ErrorMessage());
         }
-        #endregion
+
+        #endregion MessageAsync
 
         #region DeleteMessageAsync
+
         /// <inheritdoc cref="IMessageService.DeleteMessageAsync(string)"/>
         /// <remarks>
         /// May produce the following errors.
@@ -129,6 +138,7 @@ namespace SocialMedia.Infrastructure.Services
 
             return Result<bool>.Failure(ErrorType.BadRequest, "Invalid input.");
         }
-        #endregion
+
+        #endregion DeleteMessageAsync
     }
 }

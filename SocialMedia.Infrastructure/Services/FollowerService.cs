@@ -18,6 +18,7 @@ namespace SocialMedia.Infrastructure.Services
         }
 
         #region FollowAsync
+
         /// <inheritdoc cref="IFollowerService.FollowAsync(string)"/>
         /// <remarks>
         /// May produce the following errors.
@@ -57,9 +58,11 @@ namespace SocialMedia.Infrastructure.Services
 
             return Result<Follower>.Failure(ErrorType.BadRequest, "Invalid input.");
         }
-        #endregion
+
+        #endregion FollowAsync
 
         #region GetFolloweeAsync
+
         /// <inheritdoc cref="IFollowerService.GetFolloweeAsync(string)"/>
         public async Task<Follower?> GetFolloweeAsync(string userId)
         {
@@ -67,9 +70,11 @@ namespace SocialMedia.Infrastructure.Services
                 .FirstOrDefaultAsync(options => options.UserId == UserId() && options.FolloweeId == userId)
                 : null;
         }
-        #endregion
+
+        #endregion GetFolloweeAsync
 
         #region GetFollowerAsync
+
         /// <inheritdoc cref="IFollowerService.GetFollowerAsync(string)"/>
         public async Task<Follower?> GetFollowerAsync(string userId)
         {
@@ -77,27 +82,33 @@ namespace SocialMedia.Infrastructure.Services
                 .FirstOrDefaultAsync(options => options.UserId == userId && options.FolloweeId == UserId())
                 : null;
         }
-        #endregion
+
+        #endregion GetFollowerAsync
 
         #region GetFollowers
+
         /// <inheritdoc cref="IFollowerService.GetFollowers"/>
         public IQueryable<Follower> GetFollowers()
         {
             return _dbContext.Followers.Where(options => options.FolloweeId == UserId())
                 .AsNoTracking();
         }
-        #endregion
+
+        #endregion GetFollowers
 
         #region GetFollowing
+
         /// <inheritdoc cref="IFollowerService.GetFollowing"/>
         public IQueryable<Follower> GetFollowing()
         {
             return _dbContext.Followers.Where(options => options.UserId == UserId())
                 .AsNoTracking();
         }
-        #endregion
+
+        #endregion GetFollowing
 
         #region UnFollowAsync
+
         /// <inheritdoc cref="IFollowerService.UnFollowAsync(string)"/>
         /// <remarks>
         /// May produce the following errors.
@@ -124,6 +135,7 @@ namespace SocialMedia.Infrastructure.Services
 
             return Result<bool>.Failure(ErrorType.BadRequest, "Invalid input.");
         }
-        #endregion
+
+        #endregion UnFollowAsync
     }
 }

@@ -11,6 +11,7 @@ namespace SocialMedia.GraphQL.Mutations
     public class PostMutations
     {
         #region UpdatePostAsync
+
         /// <summary>
         /// Used for updating a post.
         /// </summary>
@@ -26,7 +27,7 @@ namespace SocialMedia.GraphQL.Mutations
         {
             var result = await service.UpdatePostAsync(postId, request);
 
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 return Response<Post>.Ok(result.Value);
             }
@@ -37,9 +38,11 @@ namespace SocialMedia.GraphQL.Mutations
                 _ => Response<Post>.BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion UpdatePostAsync
 
         #region DeletePostAsync
+
         /// <summary>
         /// Used for deleting a post.
         /// </summary>
@@ -66,6 +69,7 @@ namespace SocialMedia.GraphQL.Mutations
                 _ => Response<bool>.BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion DeletePostAsync
     }
 }

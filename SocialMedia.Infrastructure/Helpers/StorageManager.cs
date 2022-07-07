@@ -19,20 +19,23 @@ namespace SocialMedia.Infrastructure.Helpers
         }
 
         #region DownloadFileAsync
+
         /// <inheritdoc cref="IStorageManager.DownloadFileAsync(string)"/>
         public async Task<FileStreamResult?> DownloadFileAsync(string fileName)
         {
             var blobClient = _containerClient.GetBlobClient(fileName);
-            
+
             if (blobClient == null)
                 return null;
 
             var file = await blobClient.DownloadStreamingAsync();
             return new FileStreamResult(file.Value.Content, file.Value.Details.ContentType);
         }
-        #endregion
+
+        #endregion DownloadFileAsync
 
         #region DeleteAsync
+
         /// <inheritdoc cref="IStorageManager.DeleteAsync(string)"/>
         public async Task DeleteAsync(string fileName)
         {
@@ -42,9 +45,11 @@ namespace SocialMedia.Infrastructure.Helpers
             var blobClient = _containerClient.GetBlobClient(fileName);
             await blobClient.DeleteIfExistsAsync();
         }
-        #endregion
+
+        #endregion DeleteAsync
 
         #region UploadAsync
+
         /// <inheritdoc cref="IStorageManager.UploadAsync(IFormFile, string)"/>
         public async Task<string> UploadAsync(IFormFile formFile, string fileName = "")
         {
@@ -57,6 +62,7 @@ namespace SocialMedia.Infrastructure.Helpers
             await blobClient.UploadAsync(formFile.OpenReadStream());
             return fileName;
         }
-        #endregion
+
+        #endregion UploadAsync
     }
 }

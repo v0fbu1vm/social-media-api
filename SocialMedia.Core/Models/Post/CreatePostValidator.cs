@@ -24,6 +24,7 @@ namespace SocialMedia.Core.Models.Post
         }
 
         #region IsValidContentType
+
         /// <summary>
         /// Checks whether or not a correct file is been given.
         /// </summary>
@@ -44,12 +45,13 @@ namespace SocialMedia.Core.Models.Post
 
             foreach (var allowedContentType in allowedContentTypes)
             {
-                if(type.EndsWith(allowedContentType))
+                if (type.EndsWith(allowedContentType))
                     return true;
             }
 
             return false;
         }
-        #endregion
+
+        #endregion IsValidContentType
     }
 }

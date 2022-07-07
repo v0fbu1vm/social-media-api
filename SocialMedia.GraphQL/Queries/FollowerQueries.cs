@@ -8,6 +8,7 @@ namespace SocialMedia.GraphQL.Queries
     public class FollowerQueries
     {
         #region GetFolloweeAsync
+
         /// <summary>
         /// Gets a <see cref="Follower"/>.
         /// </summary>
@@ -22,9 +23,11 @@ namespace SocialMedia.GraphQL.Queries
         {
             return await service.GetFolloweeAsync(userId);
         }
-        #endregion
+
+        #endregion GetFolloweeAsync
 
         #region GetFollowerAsync
+
         /// <summary>
         /// Gets a <see cref="Follower"/>.
         /// </summary>
@@ -39,9 +42,11 @@ namespace SocialMedia.GraphQL.Queries
         {
             return await service.GetFollowerAsync(userId);
         }
-        #endregion
+
+        #endregion GetFollowerAsync
 
         #region GetFollowers
+
         /// <summary>
         /// Gets a list of <see cref="Follower"/>'s.
         /// </summary>
@@ -54,9 +59,11 @@ namespace SocialMedia.GraphQL.Queries
         {
             return service.GetFollowers();
         }
-        #endregion
+
+        #endregion GetFollowers
 
         #region GetFollowing
+
         /// <summary>
         /// Gets a list of <see cref="Follower"/>'s.
         /// </summary>
@@ -69,6 +76,7 @@ namespace SocialMedia.GraphQL.Queries
         {
             return service.GetFollowing();
         }
-        #endregion
+
+        #endregion GetFollowing
     }
 }

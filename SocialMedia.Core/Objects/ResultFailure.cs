@@ -12,6 +12,7 @@ namespace SocialMedia.Core.Objects
         /// Represents an error type.
         /// </summary>
         public ErrorType ErrorType { get; set; } = default!;
+
         /// <summary>
         /// Represents an error message.
         /// </summary>

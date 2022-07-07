@@ -12,6 +12,7 @@ namespace SocialMedia.GraphQL.Mutations
     public class MessageMutations
     {
         #region MessageAsync
+
         /// <summary>
         /// Used for messaging a user.
         /// </summary>
@@ -40,9 +41,11 @@ namespace SocialMedia.GraphQL.Mutations
                 _ => Response<Message>.BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion MessageAsync
 
         #region DeleteMessageAsync
+
         /// <summary>
         /// Used for deleting a message.
         /// </summary>
@@ -68,6 +71,7 @@ namespace SocialMedia.GraphQL.Mutations
                 _ => Response<bool>.BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion DeleteMessageAsync
     }
 }

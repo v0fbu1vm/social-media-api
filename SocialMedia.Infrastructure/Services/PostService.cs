@@ -24,6 +24,7 @@ namespace SocialMedia.Infrastructure.Services
         }
 
         #region GetRelevantPostsAsync
+
         /// <inheritdoc cref="IPostService.GetRelevantPostsAsync(int)"/>
         public async Task<ICollection<Post>> GetRelevantPostsAsync(int amount)
         {
@@ -33,26 +34,32 @@ namespace SocialMedia.Infrastructure.Services
                 .Take(amount)
                 .ToListAsync() : new List<Post>();
         }
-        #endregion
+
+        #endregion GetRelevantPostsAsync
 
         #region GetPostByIdAsync
+
         /// <inheritdoc cref="IPostService.GetPostByIdAsync(string)"/>
         public async Task<Post?> GetPostByIdAsync(string id)
         {
             return Guid.TryParse(id, out _) ? await _dbContext.Posts.FindAsync(id)
                 : null;
         }
-        #endregion
+
+        #endregion GetPostByIdAsync
 
         #region GetPostContentAsync
+
         /// <inheritdoc cref="IPostService.GetPostContentAsync(string)"/>
         public async Task<FileStreamResult?> GetPostContentAsync(string fileName)
         {
             return await _storageManager.DownloadFileAsync(fileName);
         }
-        #endregion
+
+        #endregion GetPostContentAsync
 
         #region PostAsync
+
         /// <inheritdoc cref="IPostService.PostAsync(CreatePostRequest)"/>
         public async Task<Result<Post>> PostAsync(CreatePostRequest request)
         {
@@ -86,9 +93,11 @@ namespace SocialMedia.Infrastructure.Services
 
             return Result<Post>.Failure(ErrorType.BadRequest, "Invalid input.");
         }
-        #endregion
+
+        #endregion PostAsync
 
         #region UpdatePostAsync
+
         /// <inheritdoc cref="IPostService.UpdatePostAsync(string, UpdatePostRequest)"/>
         public async Task<Result<Post>> UpdatePostAsync(string postId, UpdatePostRequest request)
         {
@@ -119,9 +128,11 @@ namespace SocialMedia.Infrastructure.Services
 
             return Result<Post>.Failure(ErrorType.BadRequest, validationResult.ErrorMessage());
         }
-        #endregion
+
+        #endregion UpdatePostAsync
 
         #region DeletePostAsync
+
         /// <inheritdoc cref="IPostService.DeletePostAsync(string)"/>
         /// <remarks>
         /// May produce the following errors.
@@ -159,6 +170,7 @@ namespace SocialMedia.Infrastructure.Services
 
             return Result<bool>.Failure(ErrorType.BadRequest, "Invalid input.");
         }
-        #endregion
+
+        #endregion DeletePostAsync
     }
 }

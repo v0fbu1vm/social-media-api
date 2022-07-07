@@ -26,6 +26,7 @@ namespace SocialMedia.Infrastructure.Services
         }
 
         #region RegisterAsync
+
         /// <inheritdoc cref="IAuthService.RegisterAsync(RegisterRequest)"/>
         /// <remarks>
         /// May produce the following errors.
@@ -49,17 +50,19 @@ namespace SocialMedia.Infrastructure.Services
                 };
 
                 var result = await _userManager.CreateAsync(newUser, request.Password);
-                
+
                 return result.Succeeded ? Result<bool>.Success(true)
                     : Result<bool>.Failure(ErrorType.BadRequest, result.ErrorMessage());
             }
 
             return Result<bool>.Failure(ErrorType.BadRequest, validationResult.ErrorMessage());
         }
-        #endregion
+
+        #endregion RegisterAsync
 
         #region SignInAsync
-        /// <inheritdoc cref="IAuthService.SignInAsync(LoginRequest)"/> 
+
+        /// <inheritdoc cref="IAuthService.SignInAsync(LoginRequest)"/>
         /// <remarks>
         /// May produce the following errors.
         /// <list type="bullet">
@@ -104,7 +107,8 @@ namespace SocialMedia.Infrastructure.Services
 
             return Result<LoginResponse>.Failure(ErrorType.BadRequest, validationResult.ErrorMessage());
         }
-        #endregion
+
+        #endregion SignInAsync
 
         public void Dispose()
         {

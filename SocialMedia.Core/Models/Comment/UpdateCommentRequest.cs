@@ -9,6 +9,7 @@
         /// Represents the id of the comment.
         /// </summary>
         public string Id { get; set; } = default!;
+
         /// <summary>
         /// Represents the comment.
         /// </summary>

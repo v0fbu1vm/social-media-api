@@ -57,7 +57,6 @@ namespace SocialMedia.Infrastructure.DependencyInjection
                     {
                         OnTokenValidated = context =>
                         {
-
                             var userManager = context.HttpContext.RequestServices.GetRequiredService<UserManager<User>>();
 
                             var user = userManager.GetUserAsync(context.HttpContext.User);

@@ -1,11 +1,10 @@
 ﻿using SocialMedia.Core.Enums;
-using System.Net.Mail;
 
 namespace SocialMedia.Core.Objects
 {
     /// <summary>
     /// Represents a model which can be used when executing different form
-    /// of operations. It contains detailes about how the operation went. 
+    /// of operations. It contains detailes about how the operation went.
     /// </summary>
     /// <typeparam name="T">Represents the data returned from the operation.</typeparam>
     public class Result<T>
@@ -14,14 +13,17 @@ namespace SocialMedia.Core.Objects
         /// Represents whether an operation was a success or not.
         /// </summary>
         public bool Succeeded { get; private set; }
+
         /// <summary>
         /// The data returned from the operation.
         /// </summary>
         public T Value { get; private set; } = default!;
+
         /// <summary>
         /// Used for providing detailes about an operation. Incase of failure.
         /// </summary>
         public ResultFailure Fault { get; private set; } = default!;
+
         /// <summary>
         /// Represents that the operation was a success.
         /// </summary>

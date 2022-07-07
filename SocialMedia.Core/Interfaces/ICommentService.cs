@@ -17,6 +17,7 @@ namespace SocialMedia.Core.Interfaces
         /// a <see cref="ICollection{Comment}"/>.
         /// </returns>
         public Task<ICollection<Comment>> GetCommentsAsync();
+
         /// <summary>
         /// Gets a list of comments, commented on a post.
         /// </summary>
@@ -27,6 +28,7 @@ namespace SocialMedia.Core.Interfaces
         /// a <see cref="ICollection{Comment}"/>.
         /// </returns>
         public Task<ICollection<Comment>> GetCommentsForPostAsync(string postId, int amount);
+
         /// <summary>
         /// Used for getting a comment.
         /// </summary>
@@ -36,6 +38,7 @@ namespace SocialMedia.Core.Interfaces
         /// a <see cref="Comment"/>.
         /// </returns>
         public Task<Comment?> GetCommentByIdAsync(string id);
+
         /// <summary>
         /// Used for commenting on a post.
         /// </summary>
@@ -45,6 +48,7 @@ namespace SocialMedia.Core.Interfaces
         /// A <see cref="Result{Comment}"/>, containing detailes of operation.
         /// </returns>
         public Task<Result<Comment>> CommentAsync(CreateCommentRequest request);
+
         /// <summary>
         /// Used for updating a commenting on a post.
         /// </summary>
@@ -55,6 +59,7 @@ namespace SocialMedia.Core.Interfaces
         /// A <see cref="Result{Comment}"/>, containing detailes of operation.
         /// </returns>
         public Task<Result<Comment>> UpdateCommentAsync(string id, UpdateCommentRequest request);
+
         /// <summary>
         /// Used for deleting a comment.
         /// </summary>

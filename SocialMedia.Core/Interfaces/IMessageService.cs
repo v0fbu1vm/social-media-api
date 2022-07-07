@@ -18,6 +18,7 @@ namespace SocialMedia.Core.Interfaces
         /// A <see cref="Message"/>.
         /// </returns>
         public Task<Message?> GetMessageByIdAsync(string id);
+
         /// <summary>
         /// Used for getting a list of messages sent to a specified user.
         /// </summary>
@@ -27,6 +28,7 @@ namespace SocialMedia.Core.Interfaces
         /// An <see cref="ICollection{Message}"/>.
         /// </returns>
         public Task<ICollection<Message>> GetMessagesSentToAsync(string userId);
+
         /// <summary>
         /// Used for getting a list of messages received from a specified user.
         /// </summary>
@@ -36,6 +38,7 @@ namespace SocialMedia.Core.Interfaces
         /// An <see cref="ICollection{Message}"/>.
         /// </returns>
         public Task<ICollection<Message>> GetMessagesReceivedFromAsync(string userId);
+
         /// <summary>
         /// Used for messaging a user.
         /// </summary>
@@ -45,6 +48,7 @@ namespace SocialMedia.Core.Interfaces
         /// A <see cref="Result{Message}"/>, containing detailes of operation.
         /// </returns>
         public Task<Result<Message>> MessageAsync(CreateMessageRequest request);
+
         /// <summary>
         /// Used for deleting a message.
         /// </summary>

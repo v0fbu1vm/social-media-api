@@ -8,6 +8,7 @@ namespace SocialMedia.GraphQL.Queries
     public class MessageQueries
     {
         #region GetMessageAsync
+
         /// <summary>
         /// Used for getting a message.
         /// </summary>
@@ -22,9 +23,11 @@ namespace SocialMedia.GraphQL.Queries
         {
             return await service.GetMessageByIdAsync(id);
         }
-        #endregion
+
+        #endregion GetMessageAsync
 
         #region GetMessagesSentToAsync
+
         /// <summary>
         /// Used for getting a list of messages sent to a specified user.
         /// </summary>
@@ -39,9 +42,11 @@ namespace SocialMedia.GraphQL.Queries
         {
             return await service.GetMessagesSentToAsync(userId);
         }
-        #endregion
+
+        #endregion GetMessagesSentToAsync
 
         #region GetMessagesReceivedFromAsync
+
         /// <summary>
         /// Used for getting a list of messages received from a specified user.
         /// </summary>
@@ -56,6 +61,7 @@ namespace SocialMedia.GraphQL.Queries
         {
             return await service.GetMessagesReceivedFromAsync(userId);
         }
-        #endregion
+
+        #endregion GetMessagesReceivedFromAsync
     }
 }

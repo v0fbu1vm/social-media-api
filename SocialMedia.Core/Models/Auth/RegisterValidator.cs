@@ -27,10 +27,10 @@ namespace SocialMedia.Core.Models.Auth
                 .NotEmpty()
                 .Length(8, 20)
                 .Matches(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$");
-
         }
 
         #region NameMust
+
         /// <summary>
         /// Checks whether name contains letters only.
         /// </summary>
@@ -43,6 +43,7 @@ namespace SocialMedia.Core.Models.Auth
         {
             return name.All(c => char.IsLetter(c));
         }
-        #endregion
+
+        #endregion NameMust
     }
 }

@@ -16,7 +16,8 @@ namespace SocialMedia.Core.Interfaces
         /// The <see cref="Task"/> that represents the asynchronous operation,
         /// a <see cref="FileStreamResult"/>.
         /// </returns>
-        public Task<FileStreamResult?> DownloadFileAsync(string fileName); 
+        public Task<FileStreamResult?> DownloadFileAsync(string fileName);
+
         /// <summary>
         /// For uploading a file to storage.
         /// </summary>
@@ -27,6 +28,7 @@ namespace SocialMedia.Core.Interfaces
         /// A <see langword="string"/> that represents the file name.
         /// </returns>
         public Task<string> UploadAsync(IFormFile formFile, string fileName = "");
+
         /// <summary>
         /// For deleting a file from storage.
         /// </summary>

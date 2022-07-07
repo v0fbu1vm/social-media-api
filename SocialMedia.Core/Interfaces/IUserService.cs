@@ -1,5 +1,4 @@
-﻿using SocialMedia.Core.Entities;
-using SocialMedia.Core.Models;
+﻿using SocialMedia.Core.Models;
 using SocialMedia.Core.Objects;
 
 namespace SocialMedia.Core.Interfaces
@@ -18,6 +17,7 @@ namespace SocialMedia.Core.Interfaces
         /// an <see cref="EmailConfirmationToken"/>
         /// </returns>
         public Task<EmailConfirmationToken?> GenerateEmailConfirmationTokenAsync(string email);
+
         /// <summary>
         /// Confirms an email for a specified user.
         /// </summary>

@@ -11,6 +11,7 @@ namespace SocialMedia.GraphQL.Mutations
     public class CommentMutations
     {
         #region CommentAsync
+
         /// <summary>
         /// Used for commenting on a post.
         /// </summary>
@@ -37,9 +38,11 @@ namespace SocialMedia.GraphQL.Mutations
                 _ => Response<Comment>.BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion CommentAsync
 
         #region UpdateCommentAsync
+
         /// <summary>
         /// Used for updating a comment.
         /// </summary>
@@ -66,9 +69,11 @@ namespace SocialMedia.GraphQL.Mutations
                 _ => Response<Comment>.BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion UpdateCommentAsync
 
         #region DeleteCommentAsync
+
         /// <summary>
         /// Used for deleting a comment.
         /// </summary>
@@ -94,6 +99,7 @@ namespace SocialMedia.GraphQL.Mutations
                 _ => Response<bool>.BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion DeleteCommentAsync
     }
 }

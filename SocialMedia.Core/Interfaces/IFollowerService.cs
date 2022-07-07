@@ -17,6 +17,7 @@ namespace SocialMedia.Core.Interfaces
         /// A <see cref="Result{Follower}"/>, containing detailes of operation.
         /// </returns>
         public Task<Result<Follower>> FollowAsync(string userId);
+
         /// <summary>
         /// Used for unfollowing a <see cref="Entities.User"/>.
         /// </summary>
@@ -26,6 +27,7 @@ namespace SocialMedia.Core.Interfaces
         /// A <see cref="Result{bool}"/>, containing detailes of operation.
         /// </returns>
         public Task<Result<bool>> UnFollowAsync(string userId);
+
         /// <summary>
         /// Gets a <see cref="Follower"/>.
         /// </summary>
@@ -35,6 +37,7 @@ namespace SocialMedia.Core.Interfaces
         /// a <see cref="Follower"/>.
         /// </returns>
         public Task<Follower?> GetFollowerAsync(string userId);
+
         /// <summary>
         /// Gets a <see cref="Follower"/>.
         /// </summary>
@@ -44,6 +47,7 @@ namespace SocialMedia.Core.Interfaces
         /// a <see cref="Follower"/>.
         /// </returns>
         public Task<Follower?> GetFolloweeAsync(string userId);
+
         /// <summary>
         /// Gets a list of <see cref="Follower"/>'s.
         /// </summary>
@@ -52,6 +56,7 @@ namespace SocialMedia.Core.Interfaces
         /// an <see cref="IQueryable{Follower}"/>.
         /// </returns>
         public IQueryable<Follower> GetFollowers();
+
         /// <summary>
         /// Gets a list of <see cref="Follower"/>'s.
         /// </summary>

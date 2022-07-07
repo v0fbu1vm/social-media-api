@@ -8,10 +8,8 @@ namespace SocialMedia.Infrastructure.Data
 {
     public class DatabaseContext : IdentityDbContext<User>
     {
-
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
-
         }
 
         public DbSet<Post> Posts => Set<Post>();

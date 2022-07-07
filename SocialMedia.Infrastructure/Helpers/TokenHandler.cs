@@ -14,6 +14,7 @@ namespace SocialMedia.Infrastructure.Helpers
     public class TokenHandler : ITokenHandler
     {
         #region GenerateToken
+
         /// <inheritdoc cref="ITokenHandler.GenerateToken(User)"/>
         public Token GenerateToken(User user)
         {
@@ -43,9 +44,11 @@ namespace SocialMedia.Infrastructure.Helpers
                 ExpirationDate = expires,
             };
         }
-        #endregion
-        
+
+        #endregion GenerateToken
+
         #region IsTokenValid
+
         /// <inheritdoc cref="ITokenHandler.IsTokenValid(string)"/>
         public bool IsTokenValid(string token)
         {
@@ -54,9 +57,11 @@ namespace SocialMedia.Infrastructure.Helpers
 
             return jwtSecurityToken.ValidTo > DateTime.UtcNow;
         }
-        #endregion
+
+        #endregion IsTokenValid
 
         #region GetClaims
+
         /// <inheritdoc cref="ITokenHandler.GetClaims(string)"/>
         public IEnumerable<Claim> GetClaims(string token)
         {
@@ -65,6 +70,7 @@ namespace SocialMedia.Infrastructure.Helpers
 
             return jwtSecurityToken.Claims;
         }
-        #endregion
+
+        #endregion GetClaims
     }
 }
