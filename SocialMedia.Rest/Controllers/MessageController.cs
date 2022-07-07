@@ -18,6 +18,7 @@ namespace SocialMedia.Rest.Controllers
         }
 
         #region GetMessageAsync
+
         /// <summary>
         /// An action for getting a message by id.
         /// </summary>
@@ -33,9 +34,11 @@ namespace SocialMedia.Rest.Controllers
 
             return message != null ? Ok(message) : NotFound();
         }
-        #endregion
+
+        #endregion GetMessageAsync
 
         #region GetMessagesSentToAsync
+
         /// <summary>
         /// An action for getting a list of messages sent to a specified user.
         /// </summary>
@@ -49,9 +52,11 @@ namespace SocialMedia.Rest.Controllers
         {
             return Ok(await _service.GetMessagesSentToAsync(userId));
         }
-        #endregion
+
+        #endregion GetMessagesSentToAsync
 
         #region GetMessagesReceivedFromAsync
+
         /// <summary>
         /// An action for getting a list of messages received from a specified user.
         /// </summary>
@@ -65,9 +70,11 @@ namespace SocialMedia.Rest.Controllers
         {
             return Ok(await _service.GetMessagesReceivedFromAsync(userId));
         }
-        #endregion
+
+        #endregion GetMessagesReceivedFromAsync
 
         #region DeleteMessageAsync
+
         /// <summary>
         /// An action for deleting a message.
         /// </summary>
@@ -92,6 +99,7 @@ namespace SocialMedia.Rest.Controllers
                 _ => BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion DeleteMessageAsync
     }
 }

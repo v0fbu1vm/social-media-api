@@ -10,6 +10,7 @@ namespace SocialMedia.GraphQL.Mutations
     public class FollowerMutations
     {
         #region FollowAsync
+
         /// <summary>
         /// Used for following a user.
         /// </summary>
@@ -35,9 +36,11 @@ namespace SocialMedia.GraphQL.Mutations
                 _ => Response<Follower>.BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion FollowAsync
 
         #region UnFollowAsync
+
         /// <summary>
         /// Used for unfollowing a user.
         /// </summary>
@@ -63,6 +66,7 @@ namespace SocialMedia.GraphQL.Mutations
                 _ => Response<bool>.BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion UnFollowAsync
     }
 }

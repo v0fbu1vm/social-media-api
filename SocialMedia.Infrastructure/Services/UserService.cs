@@ -21,6 +21,7 @@ namespace SocialMedia.Infrastructure.Services
         }
 
         #region ConfirmEmailAsync
+
         /// <inheritdoc cref="IUserService.ConfirmEmailAsync(string, string)"/>
         /// <remarks>
         /// May produce the following errors.
@@ -40,7 +41,7 @@ namespace SocialMedia.Infrastructure.Services
 
             if (user != null)
             {
-                if(!user.EmailConfirmed)
+                if (!user.EmailConfirmed)
                 {
                     var result = await _userManager.ConfirmEmailAsync(user, token);
 
@@ -52,11 +53,12 @@ namespace SocialMedia.Infrastructure.Services
             }
 
             return Result<bool>.Failure(ErrorType.NotFound, "User not found.");
-
         }
-        #endregion
+
+        #endregion ConfirmEmailAsync
 
         #region GenerateEmailConfirmationTokenAsync
+
         /// <inheritdoc cref="IUserService.GenerateEmailConfirmationTokenAsync(string)"/>
         public async Task<EmailConfirmationToken?> GenerateEmailConfirmationTokenAsync(string email)
         {
@@ -69,7 +71,8 @@ namespace SocialMedia.Infrastructure.Services
             }
             : null;
         }
-        #endregion
+
+        #endregion GenerateEmailConfirmationTokenAsync
 
         public void Dispose()
         {

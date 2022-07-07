@@ -18,6 +18,7 @@ namespace SocialMedia.Core.Interfaces
         /// is imbedded into it.
         /// </returns>
         public Token GenerateToken(User user);
+
         /// <summary>
         /// Checks whether or not a specified token is valid.
         /// </summary>
@@ -26,6 +27,7 @@ namespace SocialMedia.Core.Interfaces
         /// <see langword="true"/> if token is valid, otherwise <see langword="false"/>.
         /// </returns>
         public bool IsTokenValid(string token);
+
         /// <summary>
         /// Gets a list of claims.
         /// </summary>

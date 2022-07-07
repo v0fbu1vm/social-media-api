@@ -16,6 +16,7 @@ namespace SocialMedia.Rest.Controllers
         }
 
         #region ConfirmEmailAsync
+
         /// <summary>
         /// Used for confirming user email.
         /// </summary>
@@ -38,6 +39,7 @@ namespace SocialMedia.Rest.Controllers
 
             return View("Error", result.Fault.ErrorMessage);
         }
-        #endregion
+
+        #endregion ConfirmEmailAsync
     }
 }

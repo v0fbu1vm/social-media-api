@@ -9,10 +9,12 @@
         /// Represents the id of the post.
         /// </summary>
         public string Id { get; set; } = default!;
+
         /// <summary>
         /// Represents a short caption.
         /// </summary>
         public string? Caption { get; set; } = default!;
+
         /// <summary>
         /// Represents a short description of the post.
         /// </summary>

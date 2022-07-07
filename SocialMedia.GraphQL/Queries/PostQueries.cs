@@ -8,6 +8,7 @@ namespace SocialMedia.GraphQL.Queries
     public class PostQueries
     {
         #region GetPostAsync
+
         /// <summary>
         /// Used for getting a post.
         /// </summary>
@@ -22,9 +23,11 @@ namespace SocialMedia.GraphQL.Queries
         {
             return await service.GetPostByIdAsync(postId);
         }
-        #endregion
+
+        #endregion GetPostAsync
 
         #region GetRelevantPostsAsync
+
         /// <summary>
         /// Used for getting a list of posts shared by friends.
         /// </summary>
@@ -39,6 +42,7 @@ namespace SocialMedia.GraphQL.Queries
         {
             return await service.GetRelevantPostsAsync(amount);
         }
-        #endregion
+
+        #endregion GetRelevantPostsAsync
     }
 }

@@ -9,6 +9,7 @@ namespace SocialMedia.GraphQL.Subscriptions
     public class MessageSubscriptions
     {
         #region OnMessageReceivedAsync
+
         /// <summary>
         /// A method which users can subscribe to, in order to receive messages.
         /// </summary>
@@ -38,6 +39,7 @@ namespace SocialMedia.GraphQL.Subscriptions
                 throw;
             }
         }
-        #endregion
+
+        #endregion OnMessageReceivedAsync
     }
 }

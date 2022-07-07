@@ -11,6 +11,7 @@ namespace SocialMedia.Infrastructure.Helpers
     public class EmailSender : IEmailSender
     {
         #region SendEmailAsync
+
         /// <inheritdoc cref="IEmailSender.SendEmailAsync(MailMessage)"/>
         public async Task SendEmailAsync(MailMessage mailMessage)
         {
@@ -38,6 +39,7 @@ namespace SocialMedia.Infrastructure.Helpers
             await client.SendAsync(message);
             client.Disconnect(true);
         }
-        #endregion
+
+        #endregion SendEmailAsync
     }
 }

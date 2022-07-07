@@ -19,6 +19,7 @@ namespace SocialMedia.Rest.Controllers
         }
 
         #region GetRelevantPostsAsync
+
         /// <summary>
         /// An action for getting a list of posts shared by friends.
         /// </summary>
@@ -32,9 +33,11 @@ namespace SocialMedia.Rest.Controllers
         {
             return Ok(await _service.GetRelevantPostsAsync(amount));
         }
-        #endregion
+
+        #endregion GetRelevantPostsAsync
 
         #region GetPostAsync
+
         /// <summary>
         /// An action for getting a post.
         /// </summary>
@@ -55,9 +58,11 @@ namespace SocialMedia.Rest.Controllers
 
             return NotFound("Post could not be found.");
         }
-        #endregion
+
+        #endregion GetPostAsync
 
         #region GetPostContentAsync
+
         /// <summary>
         /// An action for getting the content of a post.
         /// </summary>
@@ -78,9 +83,11 @@ namespace SocialMedia.Rest.Controllers
 
             return NotFound();
         }
-        #endregion
+
+        #endregion GetPostContentAsync
 
         #region PostAsync
+
         /// <summary>
         /// An action for posting.
         /// </summary>
@@ -108,9 +115,11 @@ namespace SocialMedia.Rest.Controllers
                 _ => BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion PostAsync
 
         #region UpdatePostAsync
+
         /// <summary>
         /// An action for updating a post.
         /// </summary>
@@ -136,9 +145,11 @@ namespace SocialMedia.Rest.Controllers
                 _ => BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion UpdatePostAsync
 
         #region DeletePostAsync
+
         /// <summary>
         /// An action for deleting a post.
         /// </summary>
@@ -164,6 +175,7 @@ namespace SocialMedia.Rest.Controllers
                 _ => BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion DeletePostAsync
     }
 }

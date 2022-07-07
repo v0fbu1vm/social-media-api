@@ -19,6 +19,7 @@ namespace SocialMedia.Rest.Controllers
         }
 
         #region GetCommentsAsync
+
         /// <summary>
         /// An action for getting a list of comments, commented by the authenticated user.
         /// </summary>
@@ -31,9 +32,11 @@ namespace SocialMedia.Rest.Controllers
         {
             return Ok(await _service.GetCommentsAsync());
         }
-        #endregion
+
+        #endregion GetCommentsAsync
 
         #region GetCommentsForPostAsync
+
         /// <summary>
         /// An action for getting a list of comments, commented on a post.
         /// </summary>
@@ -48,9 +51,11 @@ namespace SocialMedia.Rest.Controllers
         {
             return Ok(await _service.GetCommentsForPostAsync(postId, amount));
         }
-        #endregion
+
+        #endregion GetCommentsForPostAsync
 
         #region GetCommentAsync
+
         /// <summary>
         /// An action for getting a comment by id.
         /// </summary>
@@ -63,12 +68,14 @@ namespace SocialMedia.Rest.Controllers
         public async Task<IActionResult> GetCommentAsync(string id)
         {
             var result = await _service.GetCommentByIdAsync(id);
-            
+
             return result != null ? Ok(result) : NotFound();
         }
-        #endregion
+
+        #endregion GetCommentAsync
 
         #region CommentAsync
+
         /// <summary>
         /// An action for commenting on a post.
         /// </summary>
@@ -97,9 +104,11 @@ namespace SocialMedia.Rest.Controllers
                 _ => BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion CommentAsync
 
         #region UpdateCommentAsync
+
         /// <summary>
         /// An action for updating a comment.
         /// </summary>
@@ -125,9 +134,11 @@ namespace SocialMedia.Rest.Controllers
                 _ => BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion UpdateCommentAsync
 
         #region DeleteCommentAsync
+
         /// <summary>
         /// An action for deleting a comment.
         /// </summary>
@@ -152,6 +163,7 @@ namespace SocialMedia.Rest.Controllers
                 _ => BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion DeleteCommentAsync
     }
 }

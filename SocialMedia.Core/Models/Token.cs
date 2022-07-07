@@ -10,6 +10,7 @@
         /// Represents the token.
         /// </summary>
         public string Content { get; set; } = default!;
+
         /// <summary>
         /// Represents the expiration date of the imbedded jwt.
         /// </summary>

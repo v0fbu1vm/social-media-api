@@ -8,6 +8,7 @@ namespace SocialMedia.Core.Models
         /// Represents the id of the user.
         /// </summary>
         public User User { get; set; } = default!;
+
         /// <summary>
         /// Represents the email confirmation token.
         /// </summary>

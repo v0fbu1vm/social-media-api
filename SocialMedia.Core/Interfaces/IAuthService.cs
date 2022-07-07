@@ -17,6 +17,7 @@ namespace SocialMedia.Core.Interfaces
         /// A <see cref="Result{bool}"/>, containing detailes of operation.
         /// </returns>
         public Task<Result<bool>> RegisterAsync(RegisterRequest request);
+
         /// <summary>
         /// Used for signing a user in.
         /// </summary>

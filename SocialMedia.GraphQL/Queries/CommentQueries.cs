@@ -7,6 +7,7 @@ namespace SocialMedia.GraphQL.Queries
     public class CommentQueries
     {
         #region GetCommentsAsync
+
         /// <summary>
         /// Used for getting a list of comments, commented by the authenticated user.
         /// </summary>
@@ -19,9 +20,11 @@ namespace SocialMedia.GraphQL.Queries
         {
             return await service.GetCommentsAsync();
         }
-        #endregion
+
+        #endregion GetCommentsAsync
 
         #region GetCommentsForPostAsync
+
         /// <summary>
         /// Used for getting a list of comments, commented on a post.
         /// </summary>
@@ -36,9 +39,11 @@ namespace SocialMedia.GraphQL.Queries
         {
             return await service.GetCommentsForPostAsync(postId, amount);
         }
-        #endregion
+
+        #endregion GetCommentsForPostAsync
 
         #region GetCommentAsync
+
         /// <summary>
         /// Used for getting a comment by id.
         /// </summary>
@@ -52,6 +57,7 @@ namespace SocialMedia.GraphQL.Queries
         {
             return await service.GetCommentByIdAsync(id);
         }
-        #endregion
+
+        #endregion GetCommentAsync
     }
 }

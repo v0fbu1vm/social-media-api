@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SocialMedia.Core.Enums;
 using SocialMedia.Core.Interfaces;
-using SocialMedia.Core.Models.Auth;
 using SocialMedia.Core.Models;
+using SocialMedia.Core.Models.Auth;
 
 namespace SocialMedia.Rest.Controllers
 {
@@ -22,6 +22,7 @@ namespace SocialMedia.Rest.Controllers
         }
 
         #region SignInAsync
+
         /// <summary>
         /// An action for authenticating a user.
         /// </summary>
@@ -53,16 +54,18 @@ namespace SocialMedia.Rest.Controllers
                 _ => BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion SignInAsync
 
         #region RegisterAsync
+
         /// <summary>
         /// An action for registering a user.
         /// </summary>
         /// <param name="request">Represents the required data for registering a user.</param>
         /// <returns>
         /// An <see cref="Microsoft.AspNetCore.Mvc.IActionResult"/>,
-        /// containing details about the operation. 
+        /// containing details about the operation.
         /// </returns>
         [HttpPost]
         public async Task<IActionResult> RegisterAsync([FromBody] RegisterRequest request)
@@ -81,11 +84,13 @@ namespace SocialMedia.Rest.Controllers
 
             return BadRequest(result.Fault.ErrorMessage);
         }
-        #endregion
+
+        #endregion RegisterAsync
 
         #region SendEmailConfirmationTokenAsync
+
         /// <summary>
-        /// Used for sending an email confirmation token to a specified user. 
+        /// Used for sending an email confirmation token to a specified user.
         /// </summary>
         /// <param name="userEmail">Represents the email of the user.</param>
         /// <returns>
@@ -114,6 +119,7 @@ namespace SocialMedia.Rest.Controllers
                 await _emailSender.SendEmailAsync(mailMessage);
             }
         }
-        #endregion
+
+        #endregion SendEmailConfirmationTokenAsync
     }
 }

@@ -11,6 +11,7 @@ namespace SocialMedia.Core.Models.Auth
         /// Represents a token.
         /// </summary>
         public Token Token { get; set; } = default!;
+
         /// <summary>
         /// Represents a user.
         /// </summary>

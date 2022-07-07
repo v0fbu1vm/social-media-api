@@ -11,7 +11,7 @@ namespace SocialMedia.Infrastructure.Data.Configs
     {
         public void Configure(EntityTypeBuilder<Follower> builder)
         {
-            builder.HasIndex(options => new { options.UserId, options.FolloweeId})
+            builder.HasIndex(options => new { options.UserId, options.FolloweeId })
                 .IsUnique();
 
             builder.HasOne(options => options.User)

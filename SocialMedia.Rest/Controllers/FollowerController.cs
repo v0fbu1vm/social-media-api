@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SocialMedia.Core.Entities;
 using SocialMedia.Core.Enums;
 using SocialMedia.Core.Interfaces;
 using SocialMedia.Rest.Models;
-using AutoMapper.QueryableExtensions;
 
 namespace SocialMedia.Rest.Controllers
 {
@@ -24,6 +24,7 @@ namespace SocialMedia.Rest.Controllers
         }
 
         #region FollowAsync
+
         /// <summary>
         /// An action for following a user.
         /// </summary>
@@ -51,9 +52,11 @@ namespace SocialMedia.Rest.Controllers
                 _ => BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion;
+
+        #endregion FollowAsync
 
         #region GetFolloweeAsync
+
         /// <summary>
         /// Gets a <see cref="Follower"/>.
         /// </summary>
@@ -69,9 +72,11 @@ namespace SocialMedia.Rest.Controllers
 
             return result != null ? Ok(_mapper.Map<FollowerItem>(result)) : NotFound();
         }
-        #endregion
+
+        #endregion GetFolloweeAsync
 
         #region GetFollowerAsync
+
         /// <summary>
         /// Gets a <see cref="Follower"/>.
         /// </summary>
@@ -87,9 +92,11 @@ namespace SocialMedia.Rest.Controllers
 
             return result != null ? Ok(_mapper.Map<FollowerItem>(result)) : NotFound();
         }
-        #endregion
+
+        #endregion GetFollowerAsync
 
         #region GetFollowers
+
         /// <summary>
         /// Gets a list of <see cref="Follower"/>'s.
         /// </summary>
@@ -102,9 +109,11 @@ namespace SocialMedia.Rest.Controllers
         {
             return Ok(_service.GetFollowers().ProjectTo<FollowerItem>(_mapper.ConfigurationProvider));
         }
-        #endregion
+
+        #endregion GetFollowers
 
         #region GetFollowing
+
         /// <summary>
         /// Gets a list of <see cref="Follower"/>'s.
         /// </summary>
@@ -117,9 +126,11 @@ namespace SocialMedia.Rest.Controllers
         {
             return Ok(_service.GetFollowing().ProjectTo<FollowerItem>(_mapper.ConfigurationProvider));
         }
-        #endregion
+
+        #endregion GetFollowing
 
         #region UnFollowAsync
+
         /// <summary>
         /// An action for unfollowing a user.
         /// </summary>
@@ -144,6 +155,7 @@ namespace SocialMedia.Rest.Controllers
                 _ => BadRequest(result.Fault.ErrorMessage)
             };
         }
-        #endregion
+
+        #endregion UnFollowAsync
     }
 }

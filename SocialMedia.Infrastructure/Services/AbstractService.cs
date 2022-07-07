@@ -21,6 +21,7 @@ namespace SocialMedia.Infrastructure.Services
         }
 
         #region UserId
+
         /// <summary>
         /// Gets the id of the authenticated user.
         /// </summary>
@@ -40,7 +41,8 @@ namespace SocialMedia.Infrastructure.Services
                 return string.Empty;
             }
         }
-        #endregion
+
+        #endregion UserId
 
         public ValueTask DisposeAsync()
         {

@@ -20,6 +20,7 @@ namespace SocialMedia.Infrastructure.Services
         }
 
         #region GetCommentsAsync
+
         /// <inheritdoc cref="ICommentService.GetCommentsAsync"/>
         public async Task<ICollection<Comment>> GetCommentsAsync()
         {
@@ -29,9 +30,11 @@ namespace SocialMedia.Infrastructure.Services
                 .AsNoTracking()
                 .ToListAsync();
         }
-        #endregion
+
+        #endregion GetCommentsAsync
 
         #region GetCommentsForPostAsync
+
         /// <inheritdoc cref="ICommentService.GetCommentsForPostAsync(string, int)"/>
         public async Task<ICollection<Comment>> GetCommentsForPostAsync(string postId, int amount)
         {
@@ -42,18 +45,22 @@ namespace SocialMedia.Infrastructure.Services
                 .AsNoTracking()
                 .ToListAsync() : new List<Comment>();
         }
-        #endregion
+
+        #endregion GetCommentsForPostAsync
 
         #region GetCommentByIdAsync
+
         /// <inheritdoc cref="ICommentService.GetCommentByIdAsync(string)"/>
         public async Task<Comment?> GetCommentByIdAsync(string id)
         {
             return Guid.TryParse(id, out _) ? await _dbContext.Comments
                 .FindAsync(id) : null;
         }
-        #endregion
+
+        #endregion GetCommentByIdAsync
 
         #region CommentAsync
+
         /// <inheritdoc cref="ICommentService.CommentAsync(CreateCommentRequest)"/>
         /// <remarks>
         /// May produce the following errors.
@@ -98,9 +105,11 @@ namespace SocialMedia.Infrastructure.Services
 
             return Result<Comment>.Failure(ErrorType.BadRequest, validationResult.ErrorMessage());
         }
-        #endregion
+
+        #endregion CommentAsync
 
         #region UpdateCommentAsync
+
         /// <inheritdoc cref="ICommentService.UpdateCommentAsync(string, UpdateCommentRequest)"/>
         /// <remarks>
         /// May produce the following errors.
@@ -137,9 +146,11 @@ namespace SocialMedia.Infrastructure.Services
 
             return Result<Comment>.Failure(ErrorType.BadRequest, validationResult.ErrorMessage());
         }
-        #endregion
+
+        #endregion UpdateCommentAsync
 
         #region DeleteCommentAsync
+
         /// <inheritdoc cref="ICommentService.DeleteCommentAsync(string)"/>
         /// <remarks>
         /// May produce the following errors.
@@ -166,6 +177,7 @@ namespace SocialMedia.Infrastructure.Services
 
             return Result<bool>.Failure(ErrorType.BadRequest, "Invalid input.");
         }
-        #endregion
+
+        #endregion DeleteCommentAsync
     }
 }

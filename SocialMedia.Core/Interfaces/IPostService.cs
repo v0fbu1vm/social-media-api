@@ -19,6 +19,7 @@ namespace SocialMedia.Core.Interfaces
         /// an <see cref="ICollection{Post}"/>.
         /// </returns>
         public Task<ICollection<Post>> GetRelevantPostsAsync(int amount);
+
         /// <summary>
         /// Used for getting a post.
         /// </summary>
@@ -28,6 +29,7 @@ namespace SocialMedia.Core.Interfaces
         /// a <see cref="Post"/>.
         /// </returns>
         public Task<Post?> GetPostByIdAsync(string id);
+
         /// <summary>
         /// Used for getting the content of a post.
         /// </summary>
@@ -37,6 +39,7 @@ namespace SocialMedia.Core.Interfaces
         /// a <see cref="FileStreamResult"/>.
         /// </returns>
         public Task<FileStreamResult?> GetPostContentAsync(string fileName);
+
         /// <summary>
         /// Used for posting.
         /// </summary>
@@ -46,6 +49,7 @@ namespace SocialMedia.Core.Interfaces
         /// A <see cref="Result{Post}"/>, containing detailes of operation.
         /// </returns>
         public Task<Result<Post>> PostAsync(CreatePostRequest request);
+
         /// <summary>
         /// Used for updating a post.
         /// </summary>
@@ -56,6 +60,7 @@ namespace SocialMedia.Core.Interfaces
         /// A <see cref="Result{Post}"/>, containing detailes of operation.
         /// </returns>
         public Task<Result<Post>> UpdatePostAsync(string postId, UpdatePostRequest request);
+
         /// <summary>
         /// Used for deleting a post.
         /// </summary>
